@@ -4,8 +4,7 @@ export default function Default() {
   return (
 
 <>
-<div class="page-header bg-gradient-primary  position-relative m-3 border-radius-xl
-">
+<div class="page-header bg-gradient-primary  position-relative m-3 border-radius-xl">
   <img src="/assets/img/shapes/waves-white.svg" alt="pattern-lines" class="position-absolute opacity-6 start-0 top-0 w-100" />
   <div class="container pb-lg-9 pb-10 pt-7 postion-relative z-index-2">
     <div class="row">
