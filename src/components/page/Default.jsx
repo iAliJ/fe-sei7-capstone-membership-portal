@@ -18,13 +18,8 @@ export default function Default() {
         <div class="nav-wrapper mt-5 position-relative z-index-2">
           <ul class="nav nav-pills nav-fill flex-row p-1" id="tabs-pricing" role="tablist">
             <li class="nav-item">
-              <a class="nav-link mb-0 active" id="tabs-iconpricing-tab-1" data-bs-toggle="tab" href="#monthly" role="tab" aria-controls="monthly" aria-selected="true">
-                Monthly
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mb-0" id="tabs-iconpricing-tab-2" data-bs-toggle="tab" href="#annual" role="tab" aria-controls="annual" aria-selected="false">
-                Annual
+              <a class="nav-link mb-0 active" id="tabs-iconpricing-tab-1" href="/signup" role="tab">
+                Sign Up
               </a>
             </li>
           </ul>

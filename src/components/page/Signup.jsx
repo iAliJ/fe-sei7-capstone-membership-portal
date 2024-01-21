@@ -1,16 +1,16 @@
 import React from 'react'
 
 import MenuTrans from './MenuTrans';
-import Signin from './user/Signin';
+import SignupForm from './user/SignupForm';
 
-export default function Login() {
+export default function Signup() {
   return (
     <>
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div className="col-12">
                 <MenuTrans />
-                <Signin />
+                <SignupForm />
             </div>
         </div>
     </div>
