@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Menu from './Menu';
+import MenuTrans from './MenuTrans';
 import Signin from './user/Signin';
 
 export default function Login() {
@@ -9,7 +9,7 @@ export default function Login() {
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div className="col-12">
-                <Menu />
+                <MenuTrans />
                 <Signin />
             </div>
         </div>
