@@ -1,11 +1,39 @@
 import React from 'react'
 import {useState, useEffect} from "react";
+import Axios from 'axios';
 // import UserNav from './UserNav'
 // import Menu from '../home/Menu'
 // import Default from '../home/Default'
 // import Benefits from './Benefits'
 
-export default function DashboardTwo( { benefits } ) {
+export default function DashboardTwo() {
+
+  const [message, setMessage] = useState([]);
+
+  const [allBenefits, setAllBenefits] = useState([]);
+
+  useEffect(() => {
+      if(localStorage.getItem('access_token') === null){                   
+          window.location.href = '/login'
+      }
+      else{
+        console.log(localStorage.getItem('access_token'));
+       (async () => {
+         try {
+          Axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token');
+          Axios.defaults.headers.common['Content-Type'] = 'application/json';
+          //console.log(Axios.defaults.headers);
+          const {data} = await Axios.get('/api/benefit/list'); //, {headers: {"Authorization": "Bearer " + localStorage.getItem('access_token')}}
+           setMessage(data);
+           setAllBenefits(data);
+
+          // console.log(data);
+          //  alert("Benefit List")
+        } catch (e) {
+          console.log('Error Not Authorized: ' + e)
+        }
+       })()};
+   }, []);
 
   // const [allBenefits, setAllBenefits] = useState([]);
 
@@ -18,7 +46,7 @@ export default function DashboardTwo( { benefits } ) {
   //   }
   // }, [props.benefits]);
 
-  console.log(benefits);
+  console.log(allBenefits);
 
   return (
 
@@ -70,14 +98,14 @@ export default function DashboardTwo( { benefits } ) {
                         <i class="fa fa-ellipsis-v text-lg"></i>
                       </button>
                       <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink2">
-                        <a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </div>
                   </div> */}
                 </div>
-                <p class="text-sm mt-3"> Find organizations and members contact details to connect and network. </p>
+                <p class="text-sm mt-3">Find organizations and members contact details. Start connecting and networking with our community. </p>
                 <hr class="horizontal dark"/>
                 <div class="row">
                   <div class="col-6">
@@ -102,19 +130,19 @@ export default function DashboardTwo( { benefits } ) {
                   <div class="ms-3 my-auto">
                     <h6>Benefits</h6>
                     <div class="avatar-group">
-                      {/* <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
+                      {/* <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
                         <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
                       </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
                         <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
                       </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Michael Lewis">
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Michael Lewis">
                         <img alt="Image placeholder" src="/assets/img/team-2.jpg" class="rounded-circle"/>
                       </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
                         <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
                       </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
                         <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
                       </a> */}
                     </div>
@@ -125,9 +153,9 @@ export default function DashboardTwo( { benefits } ) {
                         <i class="fa fa-ellipsis-v text-lg"></i>
                       </button>
                       <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
                       </div>
                     </div>
                   </div> */}
@@ -236,7 +264,7 @@ export default function DashboardTwo( { benefits } ) {
                 </thead>
                 <tbody>
 
-                {benefits.map(benefit => (
+                {allBenefits.map(benefit => (
                 <tr key={benefit.id}>
                   <td class="align-middle text-center text-sm"><p class="text-sm text-secondary mb-0">{benefit.organization_name}</p></td>
                   <td class="align-middle text-sm"><p class="text-secondary mb-0 text-sm">{benefit.title}</p></td>
@@ -268,7 +296,7 @@ export default function DashboardTwo( { benefits } ) {
                   <h6 class="mb-0">Company Information</h6>
                 </div>
                 <div class="col-md-4 text-end">
-                  <a href="javascript:;">
+                  <a href="#">
                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                   </a>
                 </div>
@@ -286,13 +314,13 @@ export default function DashboardTwo( { benefits } ) {
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li>
                 <li class="list-group-item border-0 ps-0 pb-0">
                   <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                  <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                  <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="#">
                     <i class="fab fa-facebook fa-lg"></i>
                   </a>
-                  <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                  <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="#">
                     <i class="fab fa-twitter fa-lg"></i>
                   </a>
-                  <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                  <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="#">
                     <i class="fab fa-instagram fa-lg"></i>
                   </a>
                 </li>

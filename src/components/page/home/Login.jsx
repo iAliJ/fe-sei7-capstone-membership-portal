@@ -62,7 +62,7 @@ export default function Login(props) {
                   localStorage.setItem('refresh_token', data.refresh);
                   Axios.defaults.headers.common['Authorization'] = 
                                                   `Bearer ${data['access']}`;
-                  window.location.href = '/dashboard'
+                  window.location.href = '/dashboard/home'
                           setNewUser(user)
                         })
                         .catch(err=>{
