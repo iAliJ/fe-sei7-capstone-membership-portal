@@ -20,7 +20,12 @@ function App(){
        setIsAuth(true); 
      }
    }, [isAuth]);
-
+   
+   const onLogoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setIsAuth(false);
+  };
 
   return (
     <>
