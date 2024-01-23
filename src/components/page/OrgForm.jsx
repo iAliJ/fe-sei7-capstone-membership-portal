@@ -217,7 +217,7 @@ export default function OrgForm(props) {
     <div className="container position-sticky z-index-sticky top-0">
         <div className="row">
             <div className="col-12">
-                <MenuTrans />
+                {/* <MenuTrans /> */}
             
     <main className="main-content mt-0">
     <section>
@@ -556,7 +556,7 @@ export default function OrgForm(props) {
   </div>
 </div> */}
 
-<Footer />
+{/* <Footer /> */}
 
             </div>
         </div>

@@ -71,15 +71,16 @@ function App(){
       <Route path="/login" element={ <Login setUserData={setUserData} /> }></Route>
       <Route path="/signup" element={ <Signup/> }></Route>
 
-      <Route path="/dashboard" element={ userData && <Dashboard userData={userData} logout={onLogoutHandler} /> }>
+      <Route path="/dashboard" element={ localStorage.getItem('organization_id')!=null ? <Dashboard userData={userData} logout={onLogoutHandler} /> : <OrgForm addOrg={addOrg}/> }>
         <Route path="home" element={ <UserHomepage /> }></Route>
         <Route path="directory" element={ <Directory /> }></Route>
         <Route path="benefits" element={ <Benefits /> }></Route>
+        <Route path="" element={ <OrgForm addOrg={addOrg}/> }></Route>
       </Route>
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
-      <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route>
+      {/* <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route> */}
     </Routes>
     
     </>
