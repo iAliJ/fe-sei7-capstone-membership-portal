@@ -18,6 +18,11 @@ export default function Signup() {
 
   const addUser = (user) => {
     // API path from the BE
+    // user.passwordConfirm = ""
+  
+    // user.passwordConfirm = ""
+    // console.log(user);
+
     Axios.post("user/add", user)
     .then(res => {
     console.log("User Signed Up Successfully");
@@ -30,8 +35,8 @@ export default function Signup() {
 
   return (
     <>
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
+    <div className="container position-sticky z-index-sticky top-0">
+        <div className="row">
             <div className="col-12">
                 <MenuTrans />
                 <SignupForm addUser={addUser} />

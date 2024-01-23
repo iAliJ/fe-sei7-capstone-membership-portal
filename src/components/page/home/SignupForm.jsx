@@ -82,7 +82,9 @@ export default function SignupForm(props) {
 
     setFormError(inputError);
     // console.log(formInput);
-    props.addUser(formInput);
+    if( (formInput.passwordConfirm === formInput.password) && formInput.email ){
+      props.addUser(formInput);
+    }
   };
 
   // const [formData, setFormData] = useState({
@@ -202,10 +204,10 @@ export default function SignupForm(props) {
                       onChange={({ target }) => {
                         handleUserInput(target.name, target.value);
                       }} 
-                      type="password" className="form-control" name="password" placeholder="Password" aria-label="Password" required/>
+                      type="password" className="form-control" name="password" placeholder="Password" aria-label="Password" minlength="8" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})" required/>
                       <p className="error-message">{formError.password}</p>
                       <div className="invalid-feedback">
-                        Please choose a valid password.
+                        Password must be at least 8 characters long & contains uppercase, lowercase, number & special character
                       </div>
                     </div>
                     <label htmlFor="validationCustom06">Confirm Password</label>
@@ -222,7 +224,7 @@ export default function SignupForm(props) {
                     </div>
                     <div className="form-check form-check-info text-left">
                       <input className="form-check-input" type="checkbox" value="true" id="flexCheckDefault" required />
-                      <label className="form-check-label" for="flexCheckDefault">
+                      <label className="form-check-label" htmlFor="flexCheckDefault">
                         I agree to the <a className="text-dark font-weight-bolder" onClick={handleShow}>Terms and Conditions</a>
                       </label>
                       <div className="invalid-feedback">

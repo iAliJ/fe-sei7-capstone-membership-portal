@@ -30,91 +30,196 @@ export default function DashboardTwo( { benefits } ) {
     // <UserNav/>
 <>
 <div className='container-fluid py-4'>
-    {/* <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
-          <div class="card overflow-scroll">
-            <div class="card-body d-flex">
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg border-1 rounded-circle bg-gradient-primary">
-                  <i class="fas fa-plus text-white"></i>
-                </a>
-                <p class="mb-0 text-sm mt-2">Invite members</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/team-1.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Abbie W</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/team-2.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Boris U</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/team-3.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Kay R</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/team-4.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Tom M</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/team-5.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Nicole N</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/marie.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Marie P</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/bruce-mars.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Bruce M</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-secondary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/ivana-squares.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Sandra A</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-secondary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/kal-visuals-square.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Katty L</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-secondary">
-                  <img alt="Image placeholder" class="p-1" src="/assets/img/ivana-square.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Emma O</p>
-              </div>
-              <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-secondary">
-                  <img alt="Image placeholder" class="p-1" src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/team-9.jpg"/>
-                </a>
-                <p class="mb-0 text-sm">Tao G</p>
+   
+
+<div class="container-fluid py-2">
+      <section class="py-3">
+        <div class="row">
+          <div class="col-md-8 me-auto text-left">
+            <h5>Welcome [ First Name ] [ Last Name ],</h5>
+            <p className="text-primary">Last login: January 23, 2024</p>
+          </div>
+        </div>
+        <div class="row mt-lg-4 mt-2">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="d-flex">
+                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
+                    <img src="/assets/img/small-logos/root-directory.png" alt="directory"/>
+                  </div>
+                  <div class="ms-3 my-auto">
+                    <h6>Directory</h6>
+                    <div class="avatar-group">
+
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                        <img alt="Image placeholder" src="http://localhost:8000/static/uploads/falcon.jpg" class="rounded-circle"/>
+                      </a>
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                        <img alt="Image placeholder" src="http://localhost:8000/static/uploads/parrot.jpg" class="rounded-circle"/>
+                      </a>
+                      <a href="#" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                        <img alt="Image placeholder" src="http://localhost:8000/static/uploads/cat1.jpg" class="rounded-circle"/>
+                      </a>
+
+                    </div>
+                  </div>
+                  {/* <div class="ms-auto">
+                    <div class="dropdown">
+                      <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-ellipsis-v text-lg"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink2">
+                        <a class="dropdown-item" href="javascript:;">Action</a>
+                        <a class="dropdown-item" href="javascript:;">Another action</a>
+                        <a class="dropdown-item" href="javascript:;">Something else here</a>
+                      </div>
+                    </div>
+                  </div> */}
+                </div>
+                <p class="text-sm mt-3"> Find organizations and members contact details to connect and network. </p>
+                <hr class="horizontal dark"/>
+                <div class="row">
+                  <div class="col-6">
+                    <h6 class="text-sm mb-0">5</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Members</p>
+                  </div>
+                  <div class="col-6 text-end">
+                    <h6 class="text-sm mb-0">25/01/2024</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Last Updated</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="d-flex">
+                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
+                    <img src="/assets/img/small-logos/responsibility.png" alt="benefits"/>
+                  </div>
+                  <div class="ms-3 my-auto">
+                    <h6>Benefits</h6>
+                    <div class="avatar-group">
+                      {/* <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
+                        <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
+                      </a>
+                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
+                      </a>
+                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Michael Lewis">
+                        <img alt="Image placeholder" src="/assets/img/team-2.jpg" class="rounded-circle"/>
+                      </a>
+                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
+                        <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
+                      </a>
+                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
+                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
+                      </a> */}
+                    </div>
+                  </div>
+                  {/* <div class="ms-auto">
+                    <div class="dropdown">
+                      <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-ellipsis-v text-lg"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="javascript:;">Action</a>
+                        <a class="dropdown-item" href="javascript:;">Another action</a>
+                        <a class="dropdown-item" href="javascript:;">Something else here</a>
+                      </div>
+                    </div>
+                  </div> */}
+                </div>
+                <p class="text-sm mt-3"> Enjoy membership benefits from discounts and perks provided by other member Organizations. </p>
+                <hr class="horizontal dark"/>
+                <div class="row">
+                  <div class="col-6">
+                    <h6 class="text-sm mb-0">2</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Benefits</p>
+                  </div>
+                  <div class="col-6 text-end">
+                    <h6 class="text-sm mb-0">23/01/2024</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Last Update</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="d-flex">
+                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
+                    <img src="/assets/img/small-logos/conference.png" alt="events"/>
+                  </div>
+                  <div class="ms-3 my-auto">
+                    <h6>Events</h6>
+                    <div class="avatar-group">
+                      
+                    </div>
+                  </div>
+                  <div class="ms-auto">
+                    
+                  </div>
+                </div>
+                <p class="text-sm mt-3"> Business Networking. Join Conferneces, Events, Lunch Meetings and discussion talks. </p>
+                <hr class="horizontal dark"/>
+                <div class="row">
+                  <div class="col-6">
+                    <h6 class="text-sm mb-0">1</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Upcoming</p>
+                  </div>
+                  <div class="col-6 text-end">
+                    <h6 class="text-sm mb-0">25/01/2024</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Next Event</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="d-flex">
+                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
+                    <img src="/assets/img/small-logos/office.png" alt="newsletter"/>
+                  </div>
+                  <div class="ms-3 my-auto">
+                    <h6>Newsletter</h6>
+                    <div class="avatar-group">
+                      
+                    </div>
+                  </div>
+                  <div class="ms-auto">
+                    
+                  </div>
+                </div>
+                <h5 class="text-sm mt-3 text-primary"> Coming Soon! </h5>
+                <p class="text-sm mt-3">Stay tuned for our next feature</p>
+                <hr class="horizontal dark"/>
+                <div class="row">
+                  <div class="col-6">
+                    <h6 class="text-sm mb-0">0</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Archived</p>
+                  </div>
+                  <div class="col-6 text-end">
+                    <h6 class="text-sm mb-0">01/03/2024</h6>
+                    <p class="text-secondary text-sm font-weight-bold mb-0">Next Edition</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
-      </div>
-    </div> */}
-    
+      </section>
+    </div>
+
 
     <div class="row my-4">
+
         <div class="col">
           <div class="card">
             <div class="table-responsive">
@@ -152,6 +257,9 @@ export default function DashboardTwo( { benefits } ) {
             </div>
           </div>
         </div>
+      </div>
+
+<div class="row my-4">
     <div class="col col-md-6 col-xl-4 mt-md-0 mt-4">
           <div class="card">
             <div class="card-header pb-0 p-3">
@@ -194,175 +302,6 @@ export default function DashboardTwo( { benefits } ) {
         </div>
     </div>
     
-    
-    <div class="container-fluid py-4">
-      <section class="py-3">
-        <div class="row">
-          <div class="col-md-8 me-auto text-left">
-            <h5>Some of Our Awesome Perks</h5>
-            <p>This is the paragraph where you can write more details about your projects. Keep you user engaged by providing meaningful information.</p>
-          </div>
-        </div>
-        <div class="row mt-lg-4 mt-2">
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-              <div class="card-body p-3">
-                <div class="d-flex">
-                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
-                    <img src="/assets/img/small-logos/logo-slack.svg" alt="slack_logo"/>
-                  </div>
-                  <div class="ms-3 my-auto">
-                    <h6>Benefits</h6>
-                    <div class="avatar-group">
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
-                        <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
-                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Michael Lewis">
-                        <img alt="Image placeholder" src="/assets/img/team-2.jpg" class="rounded-circle"/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
-                        <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
-                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <div class="dropdown">
-                      <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-lg"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-sm mt-3"> If everything I did failed - which it doesn&#39;t, I think that it actually succeeds. </p>
-                <hr class="horizontal dark"/>
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="text-sm mb-0">5</h6>
-                    <p class="text-secondary text-sm font-weight-bold mb-0">Participants</p>
-                  </div>
-                  <div class="col-6 text-end">
-                    <h6 class="text-sm mb-0">02.03.22</h6>
-                    <p class="text-secondary text-sm font-weight-bold mb-0">Due date</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-              <div class="card-body p-3">
-                <div class="d-flex">
-                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
-                    <img src="/assets/img/small-logos/logo-spotify.svg" alt="spotify_logo"/>
-                  </div>
-                  <div class="ms-3 my-auto">
-                    <h6>Events</h6>
-                    <div class="avatar-group">
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
-                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
-                        <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Michael Lewis">
-                        <img alt="Image placeholder" src="/assets/img/team-2.jpg" class="rounded-circle"/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <div class="dropdown">
-                      <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-lg"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink1">
-                        <a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-sm mt-3"> Pink is obviously a better color. Everyone’s born confident, and everything’s taken away from you. </p>
-                <hr class="horizontal dark"/>
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="text-sm mb-0">3</h6>
-                    <p class="text-secondary text-sm font-weight-bold mb-0">Participants</p>
-                  </div>
-                  <div class="col-6 text-end">
-                    <h6 class="text-sm mb-0">22.11.21</h6>
-                    <p class="text-secondary text-sm font-weight-bold mb-0">Due date</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-              <div class="card-body p-3">
-                <div class="d-flex">
-                  <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
-                    <img src="/assets/img/small-logos/logo-xd.svg" alt="xd_logo"/>
-                  </div>
-                  <div class="ms-3 my-auto">
-                    <h6>Newsletter</h6>
-                    <div class="avatar-group">
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Audrey Love">
-                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class="rounded-circle"/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Michael Lewis">
-                        <img alt="Image placeholder" src="/assets/img/team-2.jpg" class="rounded-circle"/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
-                        <img alt="Image placeholder" src="/assets/img/team-3.jpg" class=""/>
-                      </a>
-                      <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-original-title="Jessica Rowland">
-                        <img alt="Image placeholder" src="/assets/img/team-4.jpg" class=""/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="ms-auto">
-                    <div class="dropdown">
-                      <button class="btn btn-link text-secondary ps-0 pe-2" id="navbarDropdownMenuLink2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-lg"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink2">
-                        <a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-sm mt-3"> Constantly growing. We’re constantly making mistakes from which we learn and improve. </p>
-                <hr class="horizontal dark"/>
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="text-sm mb-0">4</h6>
-                    <p class="text-secondary text-sm font-weight-bold mb-0">Participants</p>
-                  </div>
-                  <div class="col-6 text-end">
-                    <h6 class="text-sm mb-0">06.03.20</h6>
-                    <p class="text-secondary text-sm font-weight-bold mb-0">Due date</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
     
     </div>
     </>
