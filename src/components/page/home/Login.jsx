@@ -40,6 +40,10 @@ export default function Login(props) {
                 Axios.get(`/api/user/?email=${newUser.username}`)
                         .then(async res=>{
                           console.log(res);
+                          // let allUserData = JSON.parse(res.data.profile);
+                          localStorage.clear();
+                          localStorage.setItem("userData",res.data.profile)
+                          localStorage.setItem("first_name",res.data.profile.first_name)
                           const user = {...newUser};
                           user['username'] = res.data.username
                           const {data} = await Axios.post('/api/token/',
@@ -57,13 +61,13 @@ export default function Login(props) {
                           //         // {withCredentials: true}
                                   );
                                           
-                  localStorage.clear();
+                  
                   localStorage.setItem('access_token', data.access);
                   localStorage.setItem('refresh_token', data.refresh);
                   Axios.defaults.headers.common['Authorization'] = 
                                                   `Bearer ${data['access']}`;
-                  window.location.href = '/dashboard/home'
                           setNewUser(user)
+                          window.location.href = '/dashboard/home'
                         })
                         .catch(err=>{
                           console.log(err);
