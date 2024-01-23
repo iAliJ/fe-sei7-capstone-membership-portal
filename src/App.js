@@ -14,7 +14,6 @@ import Benefits from './components/page/dashboard/Benefits';
 import OrgForm from './components/page/OrgForm';
 
 function App(){
-
   const [isAuth, setIsAuth] = useState(false);
   useEffect(() => {
     if (localStorage.getItem('access_token') !== null) {
