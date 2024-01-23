@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default function Menu(){
+
   return (
-    
 <>
 <nav className="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
     <div className="container">
@@ -27,6 +27,8 @@ export default function Menu(){
         <ul className="navbar-nav d-lg-block">
           <li className="nav-item">
             <a href="/login" className="btn btn-sm bg-white btn-round mb-0 me-1" onclick="smoothToPricing('pricing-soft-ui')">Login</a>
+          </li>
+          <li className="nav-item">
           </li>
         </ul>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD:src/components/page/user/SignupForm.jsx
 import {useState} from "react";
 
 export default function SignupForm(props) {
@@ -128,6 +129,22 @@ export default function SignupForm(props) {
 //     props.addUser(formData);
 //  }
 
+=======
+import { useState } from 'react';
+
+import Footer from './Footer'
+
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+export default function SignupForm() {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+>>>>>>> b1b56ed589a4f71b7abdb90cf0ecb40fe30bc7a0:src/components/page/home/SignupForm.jsx
   return (
     <>
 <main className="main-content mt-0">
@@ -212,8 +229,13 @@ export default function SignupForm(props) {
                     </div>
                     <div className="form-check form-check-info text-left">
                       <input className="form-check-input" type="checkbox" value="true" id="flexCheckDefault" required />
+<<<<<<< HEAD:src/components/page/user/SignupForm.jsx
                       <label className="form-check-label" htmlFor="flexCheckDefault">
                         I agree to the <a className="text-dark font-weight-bolder" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms and Conditions</a>
+=======
+                      <label className="form-check-label" for="flexCheckDefault">
+                        I agree to the <a className="text-dark font-weight-bolder" onClick={handleShow}>Terms and Conditions</a>
+>>>>>>> b1b56ed589a4f71b7abdb90cf0ecb40fe30bc7a0:src/components/page/home/SignupForm.jsx
                       </label>
                       <div className="invalid-feedback">
                         You must agree before submitting.
@@ -248,6 +270,22 @@ export default function SignupForm(props) {
       </div>
     </section>
   </main>
+<Footer />
+
+<Modal show={show} onHide={handleClose}>
+  <Modal.Header closeButton>
+    <Modal.Title>Modal heading</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleClose}>
+      Close
+    </Button>
+    <Button variant="primary" onClick={handleClose}>
+      Save Changes
+    </Button>
+  </Modal.Footer>
+</Modal>
 
   <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered" role="document">

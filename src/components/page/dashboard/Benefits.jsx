@@ -1,7 +1,7 @@
 import React from 'react'
 import UserNav from './UserNav'
-import Menu from './Menu'
-import Default from './Default'
+import Menu from '../home/Menu'
+import Default from '../home/Default'
 
 export default function Benefits() {
   return (

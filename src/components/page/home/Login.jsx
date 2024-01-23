@@ -5,6 +5,8 @@ import {useState} from "react";
 import MenuTrans from './MenuTrans';
 // import Signin from './user/Signin';
 
+import Footer from './Footer';
+
 export default function Login(props) {
   
   const [username, setUsername] = useState('');
@@ -144,6 +146,7 @@ export default function Login(props) {
     </section>
   </main>                
                 {/* <Signin login={processLogin} username={username} password={password} setUsername={setUsername} setPassword={setPassword} submit={submit}  /> */}
+            <Footer />
             </div>
         </div>
     </div>
