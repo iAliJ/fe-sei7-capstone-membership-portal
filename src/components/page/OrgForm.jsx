@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuTrans from './MenuTrans'
+import MenuTrans from './home/MenuTrans'
 
 export default function OrgForm() {
   return (
