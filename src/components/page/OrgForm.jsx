@@ -1,6 +1,7 @@
 import React from 'react'
 import MenuTrans from './home/MenuTrans'
 import {useState} from "react";
+import Axios from 'axios';
 
 import Footer from './home/Footer'
 
@@ -8,6 +9,9 @@ import Footer from './home/Footer'
 // import Modal from 'react-bootstrap/Modal';
 
 export default function OrgForm(props) {
+
+  const preparedFormData = new FormData();
+  let file = '';
 
   const [formInput, setFormInput] = useState({
     name: '',
@@ -18,7 +22,7 @@ export default function OrgForm(props) {
     address_one: '',
     address_two: '',
     city: '',
-    country: '',
+    country_id: '',
     logo: '',
     zip_code: '',
     website: '',
@@ -43,7 +47,7 @@ export default function OrgForm(props) {
     address_one: '',
     address_two: '',
     city: '',
-    country: '',
+    country_id: '',
     logo: '',
     zip_code: '',
     website: '',
@@ -61,7 +65,7 @@ export default function OrgForm(props) {
     console.log(`Handle Input: ${formInput}`);
   };
 
-  const checkhandler = (value) => {
+  const checkboxHandler = (value) => {
     if (selectedInterest.includes(value)) {
       // If the value is already in the array, remove it
       setSelectedInterest(selectedInterest.filter((interest) => interest !== value));
@@ -77,8 +81,16 @@ export default function OrgForm(props) {
     interests: [...formInput.interests, ...selectedInterest],
   };
   
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    if(e.target.files) {
+        file = e.target.files[0];
+        console.log('==============FILE CHANGES============')
+        console.log(file)
+    }
+  }
 
-  const validateFormInput = (event) => {
+  const validateFormInput = async (event) => {
     event.preventDefault();
     let inputError = {
       name: '',
@@ -89,7 +101,7 @@ export default function OrgForm(props) {
       address_one: '',
       address_two: '',
       city: '',
-      country: '',
+      country_id: '',
       logo: '',
       zip_code: '',
       website: '',
@@ -153,10 +165,10 @@ export default function OrgForm(props) {
           return
         }
 
-        if (!formInput.country) {
+        if (!formInput.country_id) {
           setFormError({
             ...inputError,
-            country: "Enter valid country",
+            country_id: "Enter valid country_id",
           });
           return
         }
@@ -180,14 +192,25 @@ export default function OrgForm(props) {
         setFormError(inputError);
         console.log(`FORM INPUT!! ${formInput}`);
         console.log(`INTEREST!!! ${selectedInterest}`);
-        props.addOrg(combinedData);
+
+
+        Object.keys(combinedData).forEach (key =>{
+          // preparedFormData.append(key, combinedData[key]);
+          preparedFormData.append(key, combinedData[key]);
+        })
+
+        // props.addOrg(preparedFormData);
         // props.addOrg(selectedInterest);
-        
+        Axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token');
+        Axios.defaults.headers.common['Content-Type'] = 'multipart/form-data';
+        console.log(Axios.defaults.headers.common)
+        const result = await Axios.post('http://127.0.0.1:8000/api/organization/create', preparedFormData);
+        console.log(result.data)
   };
   // console.log(formInput);
-  
-  console.log(combinedData);
-  console.log(selectedInterest);
+  // console.log(combinedData);
+  // console.log(selectedInterest);
+  // console.log(preparedFormData);
 
   return (
     <>
@@ -208,7 +231,7 @@ export default function OrgForm(props) {
                                 <p className="mb-0">Enter your organization details below</p>
                             </div>
                             <div className="card-body pb-3">
-                                <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput}>
+                                <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput} encType='multipart/form-data' action='' method='POST'>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <label htmlFor="validationCustom01">Organization Name</label>
@@ -286,22 +309,17 @@ export default function OrgForm(props) {
                                             <label htmlFor="validationCustom05">Country</label>
                                             <div className="mb-3">
                                             <input id='validationCustom05' type="text" 
-                                            value={formInput.country} 
+                                            value={formInput.country_id} 
                                             onChange={({ target }) => {
                                               handleUserInput(target.name, target.value);
                                             }} 
-                                            className="form-control" name="country" placeholder="Country" aria-label="Country" required/>
+                                            className="form-control" name="country_id" placeholder="Country" aria-label="Country" required/>
                                             </div>
                                             </div>
                                         <div className="col-md-6">
                                             <label htmlFor="validationCustom05">Organization Logo</label>
                                             <div className="mb-3">
-                                            <input id='validationCustom05' type="file" accept="image/png, image/jpeg" 
-                                            value={formInput.logo} 
-                                            onChange={({ target }) => {
-                                              handleUserInput(target.name, target.value);
-                                            }} 
-                                            className="form-control" name="logo" placeholder="logo" aria-label="logo" required/>
+                                            <input id='validationCustom05' type="file" accept=".png,.jpg,.jpeg" onChange={handleFileChange} className="form-control" name="logo" aria-label="logo" required/>
                                             </div>
                                             <label htmlFor="validationCustom05">Zip Code</label>
                                             <div className="mb-3">
@@ -335,7 +353,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest1" name="interest[]" value="1"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest1"> Organization & Effectiveness</label>
@@ -343,7 +361,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest2" name="interest[]" value="2"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest2"> Projects & Construction</label>
@@ -351,7 +369,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest3" name="interest[]" value="3"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest3"> Banking & Finance</label>
@@ -359,7 +377,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest4" name="interest[]" value="4"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest4"> Hospitality, Leisure & Tourism</label>
@@ -367,7 +385,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest5" name="interest[]" value="5"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest5"> ICT</label>
@@ -375,7 +393,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest6" name="interest[]" value="6"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest6"> Legal</label>
@@ -383,7 +401,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest7" name="interest[]" value="7"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest7"> Women in Business</label>
@@ -391,7 +409,7 @@ export default function OrgForm(props) {
                                                 <div className="form-check form-check-info text-left">
                                                 <input className="form-check-input" type="checkbox" id="interest8" name="interest[]" value="8"
                                                 onChange={({ target }) => {
-                                                  checkhandler(target.value);
+                                                  checkboxHandler(target.value);
                                                 }}
                                                 />
                                                 <label htmlFor="interest8"> Young Professionals</label>
