@@ -29,7 +29,7 @@
 
 <body class="g-sidenav-show bg-gray-100">
 
-  <div class="dropdown position-fixed bottom-0 start-2 mb-3 me-3 bd-mode-toggle" style="z-index: 9999999999 !important;">
+  <div class="dropdown position-fixed bottom-0 start-2 mb-3 me-3 bd-mode-toggle controlButtons" style="z-index: 9999999999 !important;">
     <button class="btn btn-sm bg-gradient-primary px-3 mr-1" onclick="darkMode(this)"><i class="bi bi-moon-stars-fill fs-6"></i></button>
     <button class="btn btn-sm bg-gradient-primary px-3" id="navbarMinimize" onclick="navbarMinimize(this)"><i class="bi bi-list fs-6"></i></button>
   </div>
@@ -42,15 +42,26 @@
 
     <div id="root"></div>
 
-<script>
-  var win = navigator.platform.indexOf('Win') > -1;
-  if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-      damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-  }
+  <script>
+    if (window.location.pathname === "/" || 
+        window.location.pathname === "/login" || 
+        window.location.pathname === "/signin" || 
+        window.location.pathname === "/signup" || 
+        window.location.pathname === "/about") {
+      var titleClass = document.querySelector(".controlButtons");
+      titleClass.classList.add("d-none");
+    }
   </script>
+
+<script>
+var win = navigator.platform.indexOf('Win') > -1;
+if (win && document.querySelector('#sidenav-scrollbar')) {
+    var options = {
+    damping: '0.5'
+    }
+    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+}
+</script>
 
 <script src="%PUBLIC_URL%/assets/js/core/popper.min.js"></script>
 <script src="%PUBLIC_URL%/assets/js/core/bootstrap.min.js"></script>
