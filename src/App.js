@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, redirect } from "react-router-dom";
 import React, { useState, useEffect} from 'react';
 import Axios from "axios";
 
@@ -47,6 +47,20 @@ function App(){
   };
 
 
+   const addOrg = (org) => {
+    console.log(`ORG data inside addOrg app.js`);
+    console.log(org);
+    Axios.post("api/organization/create", org)
+    .then(res => {
+    console.log("org Signed Up Successfully");
+    res.redirect("dashboard/home")
+    })
+    .catch(err => {
+    console.log("Error Signing Up org");
+    console.log(err);
+    })
+  }
+
   return (
     <>
 
@@ -65,7 +79,7 @@ function App(){
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
-      <Route path="/OrgForm" element={ <OrgForm/> }></Route>
+      <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route>
     </Routes>
     
     </>
