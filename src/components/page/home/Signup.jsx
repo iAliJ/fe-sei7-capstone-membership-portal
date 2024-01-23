@@ -1,5 +1,7 @@
 import React from 'react'
-import { useState } from 'react';
+// import { useState } from 'react';
+import Axios from 'axios';
+
 
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
@@ -14,13 +16,30 @@ export default function Signup() {
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
 
+  const addUser = (user) => {
+    // API path from the BE
+    // user.passwordConfirm = ""
+  
+    // user.passwordConfirm = ""
+    // console.log(user);
+
+    Axios.post("user/add", user)
+    .then(res => {
+    console.log("User Signed Up Successfully");
+    })
+    .catch(err => {
+    console.log("Error Signing Up User");
+    console.log(err);
+    })
+  }
+
   return (
     <>
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
+    <div className="container position-sticky z-index-sticky top-0">
+        <div className="row">
             <div className="col-12">
                 <MenuTrans />
-                <SignupForm />
+                <SignupForm addUser={addUser} />
 
 
       {/* <Button variant="primary" onClick={handleShow}>

@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 
 import Dashboardmenu from './Dashboardmenu';
 import Sidebar from './Sidebar';
-import Board from './Board';
+// import Board from './Board';
 import UserHomepage from './UserHomepage'
 
 export default function Dashboard() {

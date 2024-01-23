@@ -11,9 +11,9 @@ import Signup from './components/page/home/Signup';
 import Dashboard from './components/page/dashboard/Dashboard';
 import UserHomepage from './components/page/dashboard/UserHomepage';
 import Benefits from './components/page/dashboard/Benefits';
+import OrgForm from './components/page/OrgForm';
 
 function App(){
-
   const [isAuth, setIsAuth] = useState(false);
   useEffect(() => {
     if (localStorage.getItem('access_token') !== null) {
@@ -34,6 +34,7 @@ function App(){
       <Route path="/dashboard" element={ <Dashboard/> }></Route>
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
+      <Route path="/OrgForm" element={ <OrgForm/> }></Route>
     </Routes>
     
     </>
