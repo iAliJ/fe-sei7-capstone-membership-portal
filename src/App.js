@@ -20,11 +20,12 @@ function App(){
        setIsAuth(true); 
      }
    }, [isAuth]);
-   
+
    const onLogoutHandler = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
+    localStorage.removeItem("access_token");
     setIsAuth(false);
+    window.location.href = '/login'
   };
 
   return (
@@ -36,7 +37,7 @@ function App(){
       <Route path="/about" element={ <About/> }></Route>
       <Route path="/login" element={ <Login/> }></Route>
       <Route path="/signup" element={ <Signup/> }></Route>
-      <Route path="/dashboard" element={ <Dashboard/> }></Route>
+      <Route path="/dashboard" element={ <Dashboard logout={onLogoutHandler}/> }></Route>
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
       <Route path="/OrgForm" element={ <OrgForm/> }></Route>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Menu() {
+export default function Menu(props) {
   return (
     <>
 <nav className="navbar navbar-main navbar-expand-lg mt-4 top-1 px-0 mx-4 shadow border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
@@ -35,7 +35,7 @@ export default function Menu() {
       </div>
       <ul className="navbar-nav justify-content-end">
         <li className="nav-item d-flex align-items-center">
-          <a href="../../pages/authentication/signin/illustration.html" className="nav-link text-body font-weight-bold px-0" target="_blank">
+          <a href="../../pages/authentication/signin/illustration.html" onClick={props.logout} className="nav-link text-body font-weight-bold px-0" target="_blank" >
             <i className="fa fa-user me-sm-1"></i>
             <span className="d-sm-inline d-none">Logout</span>
           </a>

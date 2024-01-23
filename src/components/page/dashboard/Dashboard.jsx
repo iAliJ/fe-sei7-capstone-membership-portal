@@ -7,7 +7,7 @@ import Sidebar from './Sidebar';
 // import Board from './Board';
 import UserHomepage from './UserHomepage'
 
-export default function Dashboard() {
+export default function Dashboard(props) {
 
     const [message, setMessage] = useState([]);
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
 
 <div className="main-content position-relative max-height-vh-100 h-100">
-<Dashboardmenu />
+<Dashboardmenu logout={props.logout} />
 
 <UserHomepage benefits={allBenefits} />
 
