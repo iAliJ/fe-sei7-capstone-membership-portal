@@ -7,7 +7,7 @@ import Footer from './home/Footer'
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-export default function OrgForm() {
+export default function OrgForm(props) {
 
   const [formInput, setFormInput] = useState({
     name: '',
@@ -23,78 +23,171 @@ export default function OrgForm() {
     zip_code: '',
     website: '',
     content_info: '',
-    interest1: '',
-    interest2: '',
-    interest3: '',
-    interest4: '',
-    interest5: '',
-    interest6: '',
-    interest7: '',
-    interest8: '',
+    interests: [],
+    // interest1: '',
+    // interest2: '',
+    // interest3: '',
+    // interest4: '',
+    // interest5: '',
+    // interest6: '',
+    // interest7: '',
+    // interest8: '',
   });
+
+  const [formError, setFormError] = useState({
+    name: '',
+    cr_number: '',
+    phone_number: '',
+    email_address: '',
+    sector: '',
+    address_one: '',
+    address_two: '',
+    city: '',
+    country: '',
+    logo: '',
+    zip_code: '',
+    website: '',
+    content_info: '',
+    // interest: ''
+    });
+
+  const [selectedInterest, setSelectedInterest] = useState([]);
 
   const handleUserInput = (name, value) => {
     setFormInput({
       ...formInput,
       [name]: value,
     });
+    console.log(`Handle Input: ${formInput}`);
   };
+
+  const checkhandler = (value) => {
+    if (selectedInterest.includes(value)) {
+      // If the value is already in the array, remove it
+      setSelectedInterest(selectedInterest.filter((interest) => interest !== value));
+    } else {
+      // If the value is not in the array, add it
+      setSelectedInterest([...selectedInterest, value]);
+    }
+    console.log(`checkbox Handler: ${selectedInterest}`);
+  };
+
+  const combinedData = {
+    ...formInput,
+    interests: [...formInput.interests, ...selectedInterest],
+  };
+  
 
   const validateFormInput = (event) => {
     event.preventDefault();
     let inputError = {
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      passwordConfirm: ''
+      name: '',
+      cr_number: '',
+      phone_number: '',
+      email_address: '',
+      sector: '',
+      address_one: '',
+      address_two: '',
+      city: '',
+      country: '',
+      logo: '',
+      zip_code: '',
+      website: '',
+      content_info: '',
+      // interest: ''
     };
-    // console.log(formInput.password);
-    // console.log(formInput.passwordConfirm);
-    // console.log(inputError);
-
-    if (!formInput.email && !formInput.password) {
+    
+    if (!formInput.name) {
       setFormError({
         ...inputError,
-        email: "Enter valid email address",
-        password: "Password should not be empty",
-      });
-      return
-    }
-    // console.log(`EMAIL: ${formInput.email}`);
-
-    if (!formInput.email) {
-      setFormError({
-        ...inputError,
-        email: "Enter valid email address",
-      });
-      return
-    }
-    // console.log(`INPUT ERROR: ${inputError}`);
-    // console.log(`CONFIRM: ${formInput.passwordConfirm}`);
-    // console.log(`PASS: ${formInput.password}`);
-    if (formInput.passwordConfirm !== formInput.password) {
-      setFormError({
-        ...inputError,
-        passwordConfirm: "Password and confirm password should be the same",
-      });
-      return;
-    }
-
-    if (!formInput.password) {
-      setFormError({
-        ...inputError,
-        password: "Password should not be empty",
+        name: "Enter valid name",
       });
       return
     }
 
-    setFormError(inputError);
-    // console.log(formInput);
-    props.addUser(formInput);
+    if (!formInput.cr_number) {
+      setFormError({
+        ...inputError,
+        cr_number: "Enter valid cr_number",
+      });
+      return
+    }
+
+    if (!formInput.phone_number) {
+      setFormError({
+        ...inputError,
+        phone_number: "Enter valid phone_number",
+      });
+      return
+    }
+
+    if (!formInput.email_address) {
+      setFormError({
+        ...inputError,
+        email_address: "Enter valid email address",
+      });
+      return
+    }
+
+    if (!formInput.sector) {
+      setFormError({
+        ...inputError,
+        sector: "Enter valid sector",
+      });
+      return
+    }
+
+    if (!formInput.address_one) {
+          setFormError({
+            ...inputError,
+            address_one: "Enter valid address_one",
+          });
+          return
+        }
+    
+        if (!formInput.city) {
+          setFormError({
+            ...inputError,
+            city: "Enter valid city",
+          });
+          return
+        }
+
+        if (!formInput.country) {
+          setFormError({
+            ...inputError,
+            country: "Enter valid country",
+          });
+          return
+        }
+
+        if (!formInput.zip_code) {
+          setFormError({
+            ...inputError,
+            zip_code: "Enter valid zip_code",
+          });
+          return
+        }
+
+        if (!formInput.content_info) {
+          setFormError({
+            ...inputError,
+            content_info: "Enter valid content_info",
+          });
+          return
+        }
+
+        setFormError(inputError);
+        console.log(`FORM INPUT!! ${formInput}`);
+        console.log(`INTEREST!!! ${selectedInterest}`);
+        props.addOrg(combinedData);
+        // props.addOrg(selectedInterest);
+        
   };
+  // console.log(formInput);
   
-  
+  console.log(combinedData);
+  console.log(selectedInterest);
 
   return (
     <>
@@ -172,7 +265,7 @@ export default function OrgForm() {
                                             }} 
                                             className="form-control" name="address_one" placeholder="Address Line 1" aria-label="Address Line 1" required/>
                                             </div>
-                                            <label htmlFor="validationCustom05">Address Line 2</label>
+                                            <label htmlFor="validationCustom05">Address Line 2 (Optional)</label>
                                             <div className="mb-3">
                                             <input id='validationCustom05' type="text" 
                                             value={formInput.address_two} 
@@ -230,7 +323,7 @@ export default function OrgForm() {
                                             </div>
                                             <label htmlFor="validationCustom05">Organization Content Information</label>
                                             <div className="mb-3">
-                                                <textarea id='validationCustom05' type="text" 
+                                                <textarea id='validationCustom05'
                                                 value={formInput.content_info} 
                                             onChange={({ target }) => {
                                               handleUserInput(target.name, target.value);
@@ -240,35 +333,67 @@ export default function OrgForm() {
                                             <label htmlFor="validationCustom05">Interest Groups</label>
                                             <div className="mb-3">
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest1" name="interest1" value="1"/>
+                                                <input className="form-check-input" type="checkbox" id="interest1" name="interest[]" value="1"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest1"> Organization & Effectiveness</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest2" name="interest2" value="2"/>
+                                                <input className="form-check-input" type="checkbox" id="interest2" name="interest[]" value="2"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest2"> Projects & Construction</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest3" name="interest3" value="3"/>
+                                                <input className="form-check-input" type="checkbox" id="interest3" name="interest[]" value="3"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest3"> Banking & Finance</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest4" name="interest4" value="4"/>
+                                                <input className="form-check-input" type="checkbox" id="interest4" name="interest[]" value="4"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest4"> Hospitality, Leisure & Tourism</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest5" name="interest5" value="5"/>
+                                                <input className="form-check-input" type="checkbox" id="interest5" name="interest[]" value="5"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest5"> ICT</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest6" name="interest6" value="6"/>
+                                                <input className="form-check-input" type="checkbox" id="interest6" name="interest[]" value="6"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest6"> Legal</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest7" name="interest7" value="7"/>
+                                                <input className="form-check-input" type="checkbox" id="interest7" name="interest[]" value="7"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest7"> Women in Business</label>
                                                 </div>
                                                 <div className="form-check form-check-info text-left">
-                                                <input className="form-check-input" type="checkbox" id="interest8" name="interest8" value="8"/>
+                                                <input className="form-check-input" type="checkbox" id="interest8" name="interest[]" value="8"
+                                                onChange={({ target }) => {
+                                                  checkhandler(target.value);
+                                                }}
+                                                />
                                                 <label htmlFor="interest8"> Young Professionals</label>
                                                 </div>
                                             {/* <input id='validationCustom05' type="text" className="form-control" name="interests" placeholder="Interest Groups" aria-label="Interest Groups" required/> */}
@@ -418,6 +543,28 @@ export default function OrgForm() {
             </div>
         </div>
     </div>
+    <script>
+  {
+  (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+}
+</script>
     </>
   )
 }

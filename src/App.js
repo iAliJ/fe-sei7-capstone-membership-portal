@@ -22,6 +22,19 @@ function App(){
    }, [isAuth]);
 
 
+   const addOrg = (org) => {
+    console.log(`ORG ${org}`);
+    console.log(org);
+    axios.post("org/add", org)
+    .then(res => {
+    console.log("org Signed Up Successfully");
+    })
+    .catch(err => {
+    console.log("Error Signing Up org");
+    console.log(err);
+    })
+  }
+
   return (
     <>
 
@@ -34,7 +47,7 @@ function App(){
       <Route path="/dashboard" element={ <Dashboard/> }></Route>
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
-      <Route path="/OrgForm" element={ <OrgForm/> }></Route>
+      <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route>
     </Routes>
     
     </>
