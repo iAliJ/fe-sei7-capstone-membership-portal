@@ -38,7 +38,7 @@ function App(){
    const addOrg = (org) => {
     console.log(`ORG ${org}`);
     console.log(org);
-    axios.post("org/add", org)
+    Axios.post("org/add", org)
     .then(res => {
     console.log("org Signed Up Successfully");
     })
