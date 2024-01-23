@@ -9,6 +9,7 @@ import About from './components/page/About';
 import Login from './components/page/Login';
 import Signup from './components/page/Signup';
 import Dashboard from './components/page/Dashboard';
+import OrgForm from './components/page/OrgForm';
 
 function App(){
 
@@ -29,6 +30,7 @@ function App(){
       <Route path="/login" element={ <Login/> }></Route>
       <Route path="/signup" element={ <Signup/> }></Route>
       <Route path="/dashboard" element={ <Dashboard/> }></Route>
+      <Route path="/OrgForm" element={ <OrgForm/> }></Route>
     </Routes>
     </>
   );

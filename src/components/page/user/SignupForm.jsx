@@ -1,6 +1,133 @@
 import React from 'react'
+import {useState} from "react";
 
-export default function SignupForm() {
+export default function SignupForm(props) {
+
+  const [formInput, setFormInput] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
+  });
+
+  const [formError, setFormError] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
+  });
+
+  const handleUserInput = (name, value) => {
+    setFormInput({
+      ...formInput,
+      [name]: value,
+    });
+  };
+
+  const validateFormInput = (event) => {
+    event.preventDefault();
+    let inputError = {
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      passwordConfirm: ''
+    };
+    // console.log(formInput.password);
+    // console.log(formInput.passwordConfirm);
+    // console.log(inputError);
+
+    if (!formInput.email && !formInput.password) {
+      setFormError({
+        ...inputError,
+        email: "Enter valid email address",
+        password: "Password should not be empty",
+      });
+      return
+    }
+    // console.log(`EMAIL: ${formInput.email}`);
+
+    if (!formInput.email) {
+      setFormError({
+        ...inputError,
+        email: "Enter valid email address",
+      });
+      return
+    }
+    // console.log(`INPUT ERROR: ${inputError}`);
+    // console.log(`CONFIRM: ${formInput.passwordConfirm}`);
+    // console.log(`PASS: ${formInput.password}`);
+    if (formInput.passwordConfirm !== formInput.password) {
+      setFormError({
+        ...inputError,
+        passwordConfirm: "Password and confirm password should be the same",
+      });
+      return;
+    }
+
+    if (!formInput.password) {
+      setFormError({
+        ...inputError,
+        password: "Password should not be empty",
+      });
+      return
+    }
+
+    setFormError(inputError);
+    // console.log(formInput);
+    props.addUser(formInput);
+  };
+
+  // const [formData, setFormData] = useState({
+  //   // username: '',
+  //   first_name: '',
+  //   last_name: '',
+  //   email: '',
+  //   password: '',
+  //   passwordConfirm: ''
+  // });
+  // const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  // const [passwordMatch, setPasswordMatch] = useState(true);
+
+//   const handleChange = (e)=>{
+//     // const user = {...newUser}
+//     // user[e.target.name] = e.target.value;
+//     // console.log(user);
+//     // setNewUser(user);
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//     // if (name == 'password') {
+//     //   setPasswordConfirm(value);
+//     // }
+//     // console.log(passwordConfirm);
+//     console.log(formData.password);
+//     console.log(formData.passwordConfirm);
+//     if (formData.password !== formData.passwordConfirm) {
+//       setPasswordMatch(false);
+//       return;
+//     }
+//     setPasswordMatch(true);
+//   }
+//   const handleSubmit = (e)=>{
+//     e.preventDefault();
+//     // props.addUser(newUser);
+//     // Check if passwords match
+//     // console.log(passwordConfirm);
+//     // console.log(passwordConfirm.passwordConfirm);
+//     // if (formData.password !== formData.passwordConfirm) {
+//     //   setPasswordMatch(false);
+//     //   return;
+//     // }
+//     // setPasswordMatch(true);
+//     props.addUser(formData);
+//  }
+
   return (
     <>
 <main className="main-content mt-0">
@@ -15,35 +142,85 @@ export default function SignupForm() {
                   <p className="mb-0">Enter your email and password to register</p>
                 </div>
                 <div className="card-body pb-3">
-                  <form role="form" autoComplete="off">
-                    <label>First Name</label>
+                  <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput}>
+                    {/* <label htmlFor="validationCustom01">Username</label>
                     <div className="mb-3">
-                      <input type="text" className="form-control" name="first_name" placeholder="First Name" aria-label="First Name" required/>
+                      <input id="validationCustom01" onChange={handleChange} type="text" className="form-control" name="username" placeholder="First Name" aria-label="First Name" required/>
+                      <div className="invalid-feedback">
+                        Please choose a username.
+                      </div>
+                    </div> */}
+                    <label htmlFor="validationCustom02">First Name</label>
+                    <div className="mb-3">
+                      <input id='validationCustom02' value={formInput.first_name} 
+                      onChange={({ target }) => {
+                        handleUserInput(target.name, target.value);
+                      }} 
+                      type="text" className="form-control" name="first_name" placeholder="First Name" aria-label="First Name" required/>
+                      <p className="error-message">{formError.first_name}</p>
+                      <div className="invalid-feedback">                        
+                        Please write your first name.
+                      </div>
                     </div>
-                    <label>Last Name</label>
+                    <label htmlFor="validationCustom03">Last Name</label>
                     <div className="mb-3">
-                      <input type="text" className="form-control" name="last_name" placeholder="Last Name" aria-label="Last Name" required/>
+                      <input id='validationCustom03' value={formInput.last_name} 
+                      onChange={({ target }) => {
+                        handleUserInput(target.name, target.value);
+                      }} 
+                      type="text" className="form-control" name="last_name" placeholder="Last Name" aria-label="Last Name" required/>
+                      <p className="error-message">{formError.last_name}</p>
+                      <div className="invalid-feedback">                        
+                        Please write your last name.
+                      </div>
                     </div>
-                    <label>Email</label>
+                    <label htmlFor="validationCustom04">Email Address</label>
                     <div className="mb-3">
-                      <input type="email" className="form-control" name="email" placeholder="Email" aria-label="Email" required/>
+                      <input id='validationCustom04' value={formInput.email} 
+                      onChange={({ target }) => {
+                        handleUserInput(target.name, target.value);
+                      }} 
+                      type="email" className="form-control" name="email" placeholder="Email" aria-label="Email" required/>
+                      <p className="error-message">{formError.email}</p>
+                      <div className="invalid-feedback">
+                        Please enter a valid email address.
+                      </div>
                     </div>
-                    <label>Password</label>
+                    <label htmlFor="validationCustom05">Password</label>
                     <div className="mb-3">
-                      <input type="password" className="form-control" name="password" placeholder="Password" aria-label="Password" required/>
+                      <input id='validationCustom05' value={formInput.password} 
+                      onChange={({ target }) => {
+                        handleUserInput(target.name, target.value);
+                      }} 
+                      type="password" className="form-control" name="password" placeholder="Password" aria-label="Password" required/>
+                      <p className="error-message">{formError.password}</p>
+                      <div className="invalid-feedback">
+                        Please choose a valid password.
+                      </div>
                     </div>
-                    <label>Confirm Password</label>
+                    <label htmlFor="validationCustom06">Confirm Password</label>
                     <div className="mb-3">
-                      <input type="password" className="form-control" name="passwordConfirm" placeholder="Password Confirm" aria-label="Password" required/>
+                      <input id='validationCustom06' value={formInput.passwordConfirm} 
+                      onChange={({ target }) => {
+                        handleUserInput(target.name, target.value);
+                      }} 
+                      type="password" className="form-control" name="passwordConfirm" placeholder="Confirm Password" aria-label="Confirm Password" required/>
+                      <p className="error-message">{formError.passwordConfirm}</p>
+                      <div className="invalid-feedback">
+                        Passwords does not match.
+                      </div>
                     </div>
                     <div className="form-check form-check-info text-left">
                       <input className="form-check-input" type="checkbox" value="true" id="flexCheckDefault" required />
-                      <label className="form-check-label" for="flexCheckDefault">
+                      <label className="form-check-label" htmlFor="flexCheckDefault">
                         I agree to the <a className="text-dark font-weight-bolder" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms and Conditions</a>
                       </label>
+                      <div className="invalid-feedback">
+                        You must agree before submitting.
+                      </div>
                     </div>
                     <div className="text-center">
-                      <button type="button" className="btn bg-gradient-primary w-100 mt-4 mb-0">Sign up</button>
+                      <input type="submit" className="btn bg-gradient-primary w-100 mt-4 mb-0" value="Sign up"/>
                     </div>
                   
                   </form>
@@ -72,7 +249,7 @@ export default function SignupForm() {
     </section>
   </main>
 
-  <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered" role="document">
     <div className="modal-content">
       <div className="modal-header">
@@ -87,12 +264,42 @@ export default function SignupForm() {
         ...
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn bg-gradient-secondary">Close</button>
+        <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" className="btn bg-gradient-success" data-bs-dismiss="modal">Accept</button>
       </div>
     </div>
   </div>
 </div>
+<script>
+  {(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      let isValid = true;
+
+      // Check each input field for emptiness
+      form.querySelectorAll('input').forEach(input => {
+        if (!input.value.trim()) {
+          isValid = false;
+        }
+      });
+
+      if (!form.checkValidity() || !isValid) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+}
+</script>
     </>
   )
 }
