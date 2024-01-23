@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { useState } from 'react';
 import Axios from 'axios';
 
@@ -11,6 +11,7 @@ import SignupForm from './SignupForm';
 
 export default function Signup() {
 
+  const [emailExist,setEmailExist] = useState(false)
   // const [show, setShow] = useState(false);
 
   // const handleClose = () => setShow(false);
@@ -22,10 +23,17 @@ export default function Signup() {
   
     // user.passwordConfirm = ""
     // console.log(user);
-
-    Axios.post("user/add", user)
+    setEmailExist(false)
+    Axios.post("api/user/create/", user)
     .then(res => {
-    console.log("User Signed Up Successfully");
+    if (res.data.response){
+      setEmailExist(true)
+    }
+    else{
+      console.log("User Signed Up Successfully");
+      console.log(res);
+      window.location.href = '/login'
+    }
     })
     .catch(err => {
     console.log("Error Signing Up User");
@@ -39,7 +47,7 @@ export default function Signup() {
         <div className="row">
             <div className="col-12">
                 <MenuTrans />
-                <SignupForm addUser={addUser} />
+                <SignupForm addUser={addUser} emailExist={emailExist} />
 
 
       {/* <Button variant="primary" onClick={handleShow}>

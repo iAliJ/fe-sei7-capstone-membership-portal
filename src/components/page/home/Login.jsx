@@ -62,7 +62,7 @@ export default function Login(props) {
                   localStorage.setItem('refresh_token', data.refresh);
                   Axios.defaults.headers.common['Authorization'] = 
                                                   `Bearer ${data['access']}`;
-                  window.location.href = '/dashboard'
+                  window.location.href = '/dashboard/home'
                           setNewUser(user)
                         })
                         .catch(err=>{
@@ -120,7 +120,7 @@ export default function Login(props) {
                 <div className="card-body">
                   <form role="form" onSubmit={processLogin} >
                     <div className="mb-3">
-                      <input type="text" className="form-control form-control-lg" id="username" name="username" placeholder="Username" aria-label="Username" onChange={handleChange} />
+                      <input type="text" className="form-control form-control-lg" id="username" name="username" placeholder="Email" aria-label="Username" onChange={handleChange} />
                     </div>
                     <div className="mb-3">
                       <input type="password" className="form-control form-control-lg" id="password" name="password" placeholder="Password" aria-label="Password" onChange={handleChange} />

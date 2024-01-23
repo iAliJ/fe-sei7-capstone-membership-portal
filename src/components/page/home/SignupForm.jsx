@@ -14,6 +14,10 @@ export default function SignupForm(props) {
     email: '',
     password: '',
     passwordConfirm: '',
+    dob: '1990-01-01',
+    martial:'Single',
+    gender:'Male',
+    phoneNumber:'00000000'
   });
 
   const [formError, setFormError] = useState({
@@ -83,6 +87,7 @@ export default function SignupForm(props) {
     setFormError(inputError);
     // console.log(formInput);
     if( (formInput.passwordConfirm === formInput.password) && formInput.email ){
+      console.log(formInput);
       props.addUser(formInput);
     }
   };
@@ -197,6 +202,14 @@ export default function SignupForm(props) {
                       <div className="invalid-feedback">
                         Please enter a valid email address.
                       </div>
+                      {props.emailExist ? <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <span class="alert-icon"><i class="bi bi-exclamation-circle-fill"></i></span>
+                        <span class="alert-text"><strong>Warning!</strong> This email is already registered</span>
+                        {/* <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                       </button> */}
+                      </div>
+    :""}
                     </div>
                     <label htmlFor="validationCustom05">Password</label>
                     <div className="mb-3">

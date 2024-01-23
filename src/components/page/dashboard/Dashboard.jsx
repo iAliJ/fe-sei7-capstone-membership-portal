@@ -1,11 +1,14 @@
 import React from 'react'
 import Axios from 'axios';
 import {useState, useEffect} from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Dashboardmenu from './Dashboardmenu';
 import Sidebar from './Sidebar';
 // import Board from './Board';
 import UserHomepage from './UserHomepage'
+
+import { Outlet } from 'react-router-dom';
 
 export default function Dashboard(props) {
 
@@ -51,7 +54,17 @@ export default function Dashboard(props) {
 <div className="main-content position-relative max-height-vh-100 h-100">
 <Dashboardmenu logout={props.logout} />
 
-<UserHomepage benefits={allBenefits} />
+<Outlet />
+
+{/* <Routes>
+
+  <Route path="/dashboard" element={ <UserHomepage benefits={allBenefits} /> }>
+  <Route path="orgs" element={ <Orgtable /> }></Route>
+  
+  </Route>
+  
+</Routes> */}
+
 
 </div>
 
