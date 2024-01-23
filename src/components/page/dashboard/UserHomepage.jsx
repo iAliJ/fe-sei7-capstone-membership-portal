@@ -1,6 +1,6 @@
 import React from 'react'
-import {useState, useEffect} from "react";
-import Axios from 'axios';
+// import {useState, useEffect} from "react";
+// import Axios from 'axios';
 // import UserNav from './UserNav'
 // import Menu from '../home/Menu'
 // import Default from '../home/Default'
@@ -8,32 +8,7 @@ import Axios from 'axios';
 
 export default function DashboardTwo() {
 
-  const [message, setMessage] = useState([]);
 
-  const [allBenefits, setAllBenefits] = useState([]);
-
-  useEffect(() => {
-      if(localStorage.getItem('access_token') === null){                   
-          window.location.href = '/login'
-      }
-      else{
-        console.log(localStorage.getItem('access_token'));
-       (async () => {
-         try {
-          Axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token');
-          Axios.defaults.headers.common['Content-Type'] = 'application/json';
-          //console.log(Axios.defaults.headers);
-          const {data} = await Axios.get('/api/benefit/list'); //, {headers: {"Authorization": "Bearer " + localStorage.getItem('access_token')}}
-           setMessage(data);
-           setAllBenefits(data);
-
-          // console.log(data);
-          //  alert("Benefit List")
-        } catch (e) {
-          console.log('Error Not Authorized: ' + e)
-        }
-       })()};
-   }, []);
 
   // const [allBenefits, setAllBenefits] = useState([]);
 
@@ -46,7 +21,7 @@ export default function DashboardTwo() {
   //   }
   // }, [props.benefits]);
 
-  console.log(allBenefits);
+  // console.log(allBenefits);
 
   return (
 
@@ -244,48 +219,6 @@ export default function DashboardTwo() {
         </div>
       </section>
     </div>
-
-
-    <div class="row my-4">
-
-        <div class="col">
-          <div class="card">
-            <div class="table-responsive">
-              <table class="table align-items-center mb-0">
-                <thead>
-                  <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Organization</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Benefit</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expiry</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                {allBenefits.map(benefit => (
-                <tr key={benefit.id}>
-                  <td class="align-middle text-center text-sm"><p class="text-sm text-secondary mb-0">{benefit.organization_name}</p></td>
-                  <td class="align-middle text-sm"><p class="text-secondary mb-0 text-sm">{benefit.title}</p></td>
-                  <td class="align-middle text-sm"><p class="text-secondary mb-0 text-sm">{benefit.description}</p></td>
-                  <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{benefit.created_date}</span></td>
-                  <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{benefit.expiry_date}</span></td>
-                  <td class="align-middle text-center text-sm">
-                      <span class="badge badge-dot me-4">
-                      {benefit.status == 1 ? <i class="bg-success"></i> : <i class="bg-danger"></i>}
-                        <span class="text-dark text-xs">Status: {benefit.status} & {benefit.used_by_user}</span>
-                      </span>
-                  </td>
-                </tr>
-                ))}
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
 
 <div class="row my-4">
     <div class="col col-md-6 col-xl-4 mt-md-0 mt-4">

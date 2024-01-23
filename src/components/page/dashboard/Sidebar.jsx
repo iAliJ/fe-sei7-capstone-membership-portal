@@ -21,13 +21,19 @@ export default function sidebar() {
   <div className="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a data-bs-toggle="collapse" href="#dashboardsExamples" className="nav-link active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+        {/* <a data-bs-toggle="collapse" href="#dashboardsExamples" className="nav-link active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
           <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
               <i className="bi bi-grid-1x2-fill text-lg"></i>
           </div>
           <span className="nav-link-text ms-1">Dashboards</span>
+        </a> */}
+        <a className="nav-link active" href="/dashboard/home">
+          <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">
+          <i className="bi bi-grid-1x2-fill text-lg"></i>
+          </div>
+          <span className="nav-link-text ms-1">Dashboard</span>
         </a>
-        <div className="collapse " id="dashboardsExamples">
+        {/* <div className="collapse " id="dashboardsExamples">
           <ul className="nav ms-4 ps-3">
             <li className="nav-item ">
               <a className="nav-link " href="#">
@@ -37,14 +43,14 @@ export default function sidebar() {
             </li>
             
           </ul>
-        </div>
+        </div> */}
       </li>
       <li className="nav-item mt-3">
         <h6 className="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">PORTAL PAGES</h6>
       </li>
 
       <li className="nav-item">
-        <a className="nav-link" href="/directory" target="_blank">
+        <a className="nav-link" href="/dashboard/directory">
           <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
               <i className="bi bi-bookmark-star-fill text-dark text-lg"></i>
           </div>
@@ -53,8 +59,8 @@ export default function sidebar() {
       </li>
 
       <li className="nav-item">
-        <a className="nav-link" href="/benefits" target="_blank">
-          <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
+        <a className="nav-link" href="/dashboard/benefits">
+          <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i className="bi bi-bag-heart-fill text-dark text-lg"></i>
           </div>
           <span className="nav-link-text ms-1">Benefits</span>
@@ -62,7 +68,7 @@ export default function sidebar() {
       </li>
 
       <li className="nav-item">
-        <a className="nav-link" href="/events" target="_blank">
+        <a className="nav-link" href="/dashboard/events">
           <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center  me-2 d-flex align-items-center justify-content-center">
               <i className="bi bi-calendar-week-fill text-dark text-lg"></i>
           </div>

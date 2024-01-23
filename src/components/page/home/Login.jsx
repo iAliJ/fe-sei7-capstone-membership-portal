@@ -40,6 +40,10 @@ export default function Login(props) {
                 Axios.get(`/api/user/?email=${newUser.username}`)
                         .then(async res=>{
                           console.log(res);
+                          // let allUserData = JSON.parse(res.data.profile);
+                          localStorage.clear();
+                          localStorage.setItem("userData",res.data.profile)
+                          localStorage.setItem("first_name",res.data.profile.first_name)
                           const user = {...newUser};
                           user['username'] = res.data.username
                           const {data} = await Axios.post('/api/token/',
@@ -57,13 +61,13 @@ export default function Login(props) {
                           //         // {withCredentials: true}
                                   );
                                           
-                  localStorage.clear();
+                  
                   localStorage.setItem('access_token', data.access);
                   localStorage.setItem('refresh_token', data.refresh);
                   Axios.defaults.headers.common['Authorization'] = 
                                                   `Bearer ${data['access']}`;
-                  window.location.href = '/dashboard/home'
                           setNewUser(user)
+                          window.location.href = '/dashboard/home'
                         })
                         .catch(err=>{
                           console.log(err);
@@ -120,7 +124,7 @@ export default function Login(props) {
                 <div className="card-body">
                   <form role="form" onSubmit={processLogin} >
                     <div className="mb-3">
-                      <input type="text" className="form-control form-control-lg" id="username" name="username" placeholder="Username" aria-label="Username" onChange={handleChange} />
+                      <input type="text" className="form-control form-control-lg" id="username" name="username" placeholder="Email" aria-label="Username" onChange={handleChange} />
                     </div>
                     <div className="mb-3">
                       <input type="password" className="form-control form-control-lg" id="password" name="password" placeholder="Password" aria-label="Password" onChange={handleChange} />

@@ -1,6 +1,14 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 export default function Menu(props) {
+  // let user =""
+  // useEffect(() => {
+    
+  //   user = localStorage.getItem('userData')
+  
+    
+  // }, [])
+  
   return (
     <>
 <nav className="navbar navbar-main navbar-expand-lg mt-4 top-1 px-0 mx-4 shadow border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
@@ -34,6 +42,7 @@ export default function Menu(props) {
         </div>
       </div>
       <ul className="navbar-nav justify-content-end">
+      <li className="nav-item d-flex align-items-center px-5">{localStorage.getItem('first_name')}</li>
         <li className="nav-item d-flex align-items-center">
           <a href="#" onClick={props.logout} className="nav-link text-body font-weight-bold px-0" target="_blank">
             <i className="fa fa-user me-sm-1"></i>

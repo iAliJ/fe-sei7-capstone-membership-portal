@@ -14,10 +14,13 @@ import Benefits from './components/page/dashboard/Benefits';
 import OrgForm from './components/page/OrgForm';
 
 import UserHomepage from './components/page/dashboard/UserHomepage'
-import Orgtable from './components/page/organization/Orgtable'
+// import Orgtable from './components/page/organization/Orgtable'
+import Directory from './components/page/directory/DirectoryTable'
 
 function App(){
   const [isAuth, setIsAuth] = useState(false);
+
+  const [userData, setUserData] = useState({});
   
 
   useEffect(() => {
@@ -26,11 +29,20 @@ function App(){
      }
    }, [isAuth]);
 
-   
+
+  //  useEffect(() => {
+
+  //   setUserData(userData)
+    
+  //  }, []);
+
    const onLogoutHandler = (e) => {
     e.preventDefault();
+    localStorage.clear();
     localStorage.removeItem("access_token");
+    localStorage.removeItem("first_name");
     setIsAuth(false);
+    setUserData(null);
     window.location.href = '/login'
   };
 
@@ -56,12 +68,13 @@ function App(){
     <Routes>
       <Route path="/" element={ <Home/> }></Route>
       <Route path="/about" element={ <About/> }></Route>
-      <Route path="/login" element={ <Login/> }></Route>
+      <Route path="/login" element={ <Login setUserData={setUserData} /> }></Route>
       <Route path="/signup" element={ <Signup/> }></Route>
 
-      <Route path="/dashboard" element={ <Dashboard logout={onLogoutHandler} /> }>
+      <Route path="/dashboard" element={ userData && <Dashboard userData={userData} logout={onLogoutHandler} /> }>
         <Route path="home" element={ <UserHomepage /> }></Route>
-        <Route path="orgs" element={ <Orgtable /> }></Route>
+        <Route path="directory" element={ <Directory /> }></Route>
+        <Route path="benefits" element={ <Benefits /> }></Route>
       </Route>
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
