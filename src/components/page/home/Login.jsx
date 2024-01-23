@@ -37,27 +37,39 @@ export default function Login(props) {
               try {
                 // Axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
                 // Axios.defaults.xsrfCookieName = "csrftoken";
-                const {data} = await Axios.post('/api/token/',
-                newUser,
-                {  headers: { "Content-Type": "multipart/form-data" },
-              }
-                // {
-                //         headers: {
-                //           // 'Authorization': `Token mytoken`,
-                //           // 'Content-Type': 'application/json',
-                //           'Access-Control-Allow-Origin': '*',
-                //           // Other possible headers,
-                          
-                //         }},
-                //         // {withCredentials: true}
-                        );
-                                        
-        localStorage.clear();
-        localStorage.setItem('access_token', data.access);
-        localStorage.setItem('refresh_token', data.refresh);
-        Axios.defaults.headers.common['Authorization'] = 
-                                        `Bearer ${data['access']}`;
-        window.location.href = '/dashboard'
+                Axios.get(`/api/user/?email=${newUser.username}`)
+                        .then(async res=>{
+                          console.log(res);
+                          const user = {...newUser};
+                          user['username'] = res.data.username
+                          const {data} = await Axios.post('/api/token/',
+                          user,
+                          {  headers: { "Content-Type": "multipart/form-data" },
+                        }
+                          // {
+                          //         headers: {
+                          //           // 'Authorization': `Token mytoken`,
+                          //           // 'Content-Type': 'application/json',
+                          //           'Access-Control-Allow-Origin': '*',
+                          //           // Other possible headers,
+                                    
+                          //         }},
+                          //         // {withCredentials: true}
+                                  );
+                                          
+                  localStorage.clear();
+                  localStorage.setItem('access_token', data.access);
+                  localStorage.setItem('refresh_token', data.refresh);
+                  Axios.defaults.headers.common['Authorization'] = 
+                                                  `Bearer ${data['access']}`;
+                  window.location.href = '/dashboard/home'
+                          setNewUser(user)
+                        })
+                        .catch(err=>{
+                          console.log(err);
+                        });
+                console.log("new",newUser);
+               
 
 
               } catch (error) {
