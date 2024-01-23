@@ -1,18 +1,36 @@
 import React from 'react'
-import UserNav from './UserNav'
-import Menu from './Menu'
-import Default from './Default'
-import Benefits from './Benefits'
+import {useState, useEffect} from "react";
+// import UserNav from './UserNav'
+// import Menu from '../home/Menu'
+// import Default from '../home/Default'
+// import Benefits from './Benefits'
 
-export default function DashboardTwo() {
+export default function DashboardTwo( { benefits } ) {
+
+  // const [allBenefits, setAllBenefits] = useState([]);
+
+  // useEffect(() => {
+  //   if (props.benefits && props.benefits.length > 0) {
+  //     const benefitsList = props.benefits.map((benefit, index) => (
+  //       <p key={index}>{index}. {benefit}</p>
+  //     ));
+  //     setAllBenefits(benefitsList);
+  //   }
+  // }, [props.benefits]);
+
+  console.log(benefits);
+
   return (
-    <>
-    <Menu/>
-    <Default/>
-    <UserNav/>
-    <>
-    <div className='container-fluid py-4'>
-    <div class="container-fluid py-4">
+
+    
+
+    // <>
+    // <Menu/>
+    // <Default/>
+    // <UserNav/>
+<>
+<div className='container-fluid py-4'>
+    {/* <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card overflow-scroll">
@@ -93,7 +111,7 @@ export default function DashboardTwo() {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     
 
     <div class="row my-4">
@@ -103,195 +121,32 @@ export default function DashboardTwo() {
               <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Review</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Organization</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Benefit</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expiry</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">John Michael</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm text-secondary mb-0">Manager</p>
-                    </td>
-                    <td>
+
+                {benefits.map(benefit => (
+                <tr key={benefit.id}>
+                  <td class="align-middle text-center text-sm"><p class="text-sm text-secondary mb-0">{benefit.organization_name}</p></td>
+                  <td class="align-middle text-sm"><p class="text-secondary mb-0 text-sm">{benefit.title}</p></td>
+                  <td class="align-middle text-sm"><p class="text-secondary mb-0 text-sm">{benefit.description}</p></td>
+                  <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{benefit.created_date}</span></td>
+                  <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{benefit.expiry_date}</span></td>
+                  <td class="align-middle text-center text-sm">
                       <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
+                      {benefit.status == 1 ? <i class="bg-success"></i> : <i class="bg-danger"></i>}
+                        <span class="text-dark text-xs">Status: {benefit.status} & {benefit.used_by_user}</span>
                       </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm">john@user.com</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">23/04/18</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">43431</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="avatar image"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm text-secondary mb-0">Programator</p>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm">alexa@user.com</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">93021</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../../../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="avatar image"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm text-secondary mb-0">Executive</p>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-dark"></i>
-                        <span class="text-dark text-xs">neutral</span>
-                      </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm">laurent@user.com</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">10392</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="avatar image"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Michael Levi</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm text-secondary mb-0">Backend developer</p>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm">michael@user.com</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">34002</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="avatar image"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Richard Gran</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm text-secondary mb-0">Manager</p>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-danger"></i>
-                        <span class="text-dark text-xs">negative</span>
-                      </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm">richard@user.com</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">91879</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="../../../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="avatar image"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-sm text-secondary mb-0">Programtor</p>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot me-4">
-                        <i class="bg-info"></i>
-                        <span class="text-dark text-xs">positive</span>
-                      </span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <p class="text-secondary mb-0 text-sm">miriam@user.com</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-sm">23042</span>
-                    </td>
-                  </tr>
+                  </td>
+                </tr>
+                ))}
+                  
                 </tbody>
               </table>
             </div>
@@ -511,6 +366,6 @@ export default function DashboardTwo() {
     
     </div>
     </>
-    </>
+
   )
 }

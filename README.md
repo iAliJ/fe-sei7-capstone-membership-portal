@@ -1,6 +1,16 @@
 # fe-sei7-capstone-membership-portal
 Front End SEI7 Capstone Project Membership-Portal
 
+# Dependencies
+
+npm i axios
+npm i react-router-dom 
+npm i react-bootstrap
+npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+
+
 <img src="https://i.imgur.com/NQXEQci.png">
 <img = src="https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png"> 
 

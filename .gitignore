@@ -41,8 +41,6 @@ packages/react-devtools-timeline/dist# See https://help.github.com/articles/igno
 /node_modules
 /.pnp
 .pnp.js
-package.json
-package-lock.json
 
 # testing
 /coverage
