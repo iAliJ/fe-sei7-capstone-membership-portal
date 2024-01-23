@@ -1,6 +1,18 @@
 import React from 'react'
+import { useState } from 'react';
+
+import Footer from './Footer'
+
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function SignupForm() {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
 <main className="main-content mt-0">
@@ -39,7 +51,7 @@ export default function SignupForm() {
                     <div className="form-check form-check-info text-left">
                       <input className="form-check-input" type="checkbox" value="true" id="flexCheckDefault" required />
                       <label className="form-check-label" for="flexCheckDefault">
-                        I agree to the <a className="text-dark font-weight-bolder" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms and Conditions</a>
+                        I agree to the <a className="text-dark font-weight-bolder" onClick={handleShow}>Terms and Conditions</a>
                       </label>
                     </div>
                     <div className="text-center">
@@ -71,6 +83,22 @@ export default function SignupForm() {
       </div>
     </section>
   </main>
+<Footer />
+
+<Modal show={show} onHide={handleClose}>
+  <Modal.Header closeButton>
+    <Modal.Title>Modal heading</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleClose}>
+      Close
+    </Button>
+    <Button variant="primary" onClick={handleClose}>
+      Save Changes
+    </Button>
+  </Modal.Footer>
+</Modal>
 
   <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered" role="document">
