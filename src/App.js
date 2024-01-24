@@ -11,6 +11,7 @@ import Signup from './components/page/home/Signup';
 import Dashboard from './components/page/dashboard/Dashboard';
 // import UserHomepage from './components/page/dashboard/UserHomepage';
 import Benefits from './components/page/dashboard/Benefits';
+import Events from './components/page/dashboard/Events';
 import OrgForm from './components/page/OrgForm';
 
 import UserHomepage from './components/page/dashboard/UserHomepage'
@@ -71,15 +72,17 @@ function App(){
       <Route path="/login" element={ <Login setUserData={setUserData} /> }></Route>
       <Route path="/signup" element={ <Signup/> }></Route>
 
-      <Route path="/dashboard" element={ userData && <Dashboard userData={userData} logout={onLogoutHandler} /> }>
+      <Route path="/dashboard" element={ localStorage.getItem('organization_id')!=null ? <Dashboard userData={userData} logout={onLogoutHandler} /> : <OrgForm addOrg={addOrg}/> }>
         <Route path="home" element={ <UserHomepage /> }></Route>
         <Route path="directory" element={ <Directory /> }></Route>
         <Route path="benefits" element={ <Benefits /> }></Route>
+        <Route path="events" element={ <Events /> }></Route>
+        <Route path="" element={ <OrgForm addOrg={addOrg}/> }></Route>
       </Route>
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
-      <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route>
+      {/* <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route> */}
     </Routes>
     
     </>

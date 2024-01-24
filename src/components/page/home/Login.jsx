@@ -44,6 +44,8 @@ export default function Login(props) {
                           localStorage.clear();
                           localStorage.setItem("userData",res.data.profile)
                           localStorage.setItem("first_name",res.data.profile.first_name)
+                          localStorage.setItem("last_name",res.data.profile.last_name)
+                          localStorage.setItem("organization_id",res.data.profile.organization_id)
                           const user = {...newUser};
                           user['username'] = res.data.username
                           const {data} = await Axios.post('/api/token/',
@@ -67,7 +69,11 @@ export default function Login(props) {
                   Axios.defaults.headers.common['Authorization'] = 
                                                   `Bearer ${data['access']}`;
                           setNewUser(user)
-                          window.location.href = '/dashboard/home'
+                          if(res.data.profile.organization_id != null){
+                            window.location.href = '/dashboard/home'
+                          }else{
+                            window.location.href = '/dashboard/'
+                          }
                         })
                         .catch(err=>{
                           console.log(err);

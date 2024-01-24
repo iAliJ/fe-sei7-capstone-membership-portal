@@ -14,7 +14,7 @@ export default function SignupForm(props) {
     email: '',
     password: '',
     passwordConfirm: '',
-    dob: '1990-01-01',
+    dob: '2000-01-01',
     martial:'Single',
     gender:'Male',
     phoneNumber:'00000000'
