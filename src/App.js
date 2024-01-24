@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { Routes, Route, redirect } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect} from 'react';
 import Axios from "axios";
 
@@ -13,10 +13,12 @@ import Dashboard from './components/page/dashboard/Dashboard';
 import Benefits from './components/page/dashboard/Benefits';
 import Events from './components/page/dashboard/Events';
 import OrgForm from './components/page/OrgForm';
+import OrgApprovalWait from './components/page/OrgApprovalWait';
 
 import UserHomepage from './components/page/dashboard/UserHomepage'
 // import Orgtable from './components/page/organization/Orgtable'
 import Directory from './components/page/directory/DirectoryTable'
+import DirectoryDetail from './components/page/directory/DirectoryDetail' 
 
 function App(){
   const [isAuth, setIsAuth] = useState(false);
@@ -75,9 +77,11 @@ function App(){
       <Route path="/dashboard" element={ localStorage.getItem('organization_id')!=null ? <Dashboard userData={userData} logout={onLogoutHandler} /> : <OrgForm addOrg={addOrg}/> }>
         <Route path="home" element={ <UserHomepage /> }></Route>
         <Route path="directory" element={ <Directory /> }></Route>
+        <Route path="directory/detail" element={ <DirectoryDetail /> }></Route>
         <Route path="benefits" element={ <Benefits /> }></Route>
         <Route path="events" element={ <Events /> }></Route>
         <Route path="" element={ <OrgForm addOrg={addOrg}/> }></Route>
+        <Route path="pending" element={ <OrgApprovalWait /> }></Route>
       </Route>
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
