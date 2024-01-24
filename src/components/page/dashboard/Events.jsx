@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from "react";
 import Axios from 'axios';
+import { json } from 'react-router-dom';
 
 export default function EventsTable() {
 
@@ -29,6 +30,18 @@ export default function EventsTable() {
          })()};
      }, []);
 
+     const registerUser = (userId,EventId)=>{
+      console.log(EventId)
+      const jsonData = JSON.stringify({'user': userId, 'event': EventId})
+      Axios.post("/api/event/adduser",jsonData)
+      .then((res)=>{
+        console.log("Registered successfully")
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+
+     }
 
   return (
 
@@ -55,23 +68,25 @@ export default function EventsTable() {
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sponsor</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Start</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">End</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Attendees</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Regstration</th>
           </tr>
         </thead>
         <tbody>
 
-        {allEvents.map(event => ( 
+        {allEvents.map(event => (
         <tr key={event.id}>
           <td class="align-middle text-sm"><p class="text-sm text-secondary mb-0">{event.title}</p></td>
           <td class="align-middle text-sm"><p class="text-secondary mb-0">{event.location}</p></td>
           <td class="align-middle text-sm"><p class="text-secondary mb-0">{event.sponsor}</p></td>
           <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{event.start_date}</span></td>
           <td class="align-middle text-sm"><span class="text-secondary text-sm">{event.end_date}</span></td>
-          <td class="align-middle text-center text-sm">
+          <td class="align-middle text-sm"><button className='btn btn-sm btn-success' onClick={()=>registerUser(localStorage.getItem('user_id'),event.id)}>Register</button></td>
+          {/* <a href='' className='btn btn-sm btn-success'>Register</a> */}
+          {/*<td class="align-middle text-center text-sm">
               <span class="badge badge-dot me-4">
               {event.attendees > 0 ? <><span class="text-dark text-xs">{event.attendees} Attendees<i class="bg-success"></i></span></>  : <><span class="text-dark text-xs">Non Registered <i class="bg-danger"></i></span></> }
               </span>
-          </td>
+        </td>*/}
         </tr>
         ))}
           
