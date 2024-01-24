@@ -36,12 +36,16 @@ export default function EventsTable() {
       Axios.post("/api/event/adduser",jsonData)
       .then((res)=>{
         console.log("Registered successfully")
+
+        window.location.href = '/dashboard/events'
       })
       .catch((err)=>{
         console.log(err)
       })
 
      }
+
+let checkreg = false;
 
   return (
 
@@ -80,7 +84,34 @@ export default function EventsTable() {
           <td class="align-middle text-sm"><p class="text-secondary mb-0">{event.sponsor}</p></td>
           <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{event.start_date}</span></td>
           <td class="align-middle text-sm"><span class="text-secondary text-sm">{event.end_date}</span></td>
-          <td class="align-middle text-sm"><button className='btn btn-sm btn-success' onClick={()=>registerUser(localStorage.getItem('user_id'),event.id)}>Register</button></td>
+          <td class="align-middle text-sm">
+
+          
+          
+            <br />
+
+            {/* {event.attendees.includes(localStorage.getItem('user_id')) ? 
+              <><kbd>REGISTERED </kbd></> 
+              : 
+              <><button className='btn btn-sm btn-success' onClick={()=>registerUser(localStorage.getItem('user_id'),event.id)}>Register</button></> 
+            } */}
+
+
+          
+            {/* <button className='btn btn-sm btn-success' onClick={()=>registerUser(localStorage.getItem('user_id'),event.id)}>Register</button> */}
+            <br />
+            {event.attendees.map(attendee => ( 
+              (attendee.id == localStorage.getItem('user_id') ? 
+              <><button className="btn btn-sm btn-dark">Registred</button> {checkreg = true}</> 
+              : 
+              <></>)
+            ))
+            }
+            {checkreg ? checkreg = false : 
+              <button className='btn btn-sm btn-success' onClick={()=>registerUser(localStorage.getItem('user_id'),event.id)}>Register</button>
+            }
+            
+          </td>
           {/* <a href='' className='btn btn-sm btn-success'>Register</a> */}
           {/*<td class="align-middle text-center text-sm">
               <span class="badge badge-dot me-4">
