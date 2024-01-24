@@ -196,9 +196,17 @@ export default function OrgForm(props) {
 
         Object.keys(combinedData).forEach (key =>{
           // preparedFormData.append(key, combinedData[key]);
-          preparedFormData.append(key, combinedData[key]);
+          if(Array.isArray(combinedData[key])){
+            for(let i=0; i < combinedData[key].length;i++){
+              preparedFormData.append(key, combinedData[key][i]);
+            }
+          }else{
+            preparedFormData.append(key, combinedData[key]);
+          }
         })
 
+        preparedFormData.append('user_id',localStorage.getItem('user_id'))
+        
         // props.addOrg(preparedFormData);
         // props.addOrg(selectedInterest);
         Axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token');
