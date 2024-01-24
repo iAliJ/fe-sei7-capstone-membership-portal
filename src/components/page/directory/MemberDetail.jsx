@@ -9,7 +9,7 @@ export default function MemberDetail() {
 
     const location = useLocation();
     const { email } = location.state;
-    const [profile,setProfile] = useState()
+    // const [profile,setProfile] = useState()
 
     useEffect(() => {
         if(localStorage.getItem('access_token') === null){                   

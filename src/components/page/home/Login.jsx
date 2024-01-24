@@ -9,8 +9,8 @@ import Footer from './Footer';
 
 export default function Login(props) {
   
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
 
   const [newUser, setNewUser] = useState({});
 
@@ -131,7 +131,7 @@ export default function Login(props) {
                   <p className="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div className="card-body">
-                  <form role="form" onSubmit={processLogin} >
+                  <form onSubmit={processLogin} >
                     <div className="mb-3">
                       <input type="text" className="form-control form-control-lg" id="username" name="username" placeholder="Email" aria-label="Username" onChange={handleChange} />
                     </div>

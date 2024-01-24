@@ -22,6 +22,36 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="%PUBLIC_URL%/assets/css/soft-ui-dashboard.css?v=1.1.1" rel="stylesheet" />
   <link id="pagestyle" href="%PUBLIC_URL%/assets/css/styles.css" rel="stylesheet" />
+
+<style>
+   
+#my-qr-reader {
+	padding: 20px !important;
+	border: 1.5px solid #b2b2b2 !important;
+	border-radius: 8px;
+}
+ 
+#my-qr-reader img[alt="Info icon"] {
+	display: none;
+}
+ 
+#my-qr-reader img[alt="Camera based scan"] {
+	width: 100px !important;
+	height: 100px !important;
+}
+ 
+#html5-qrcode-anchor-scan-type-change {
+	text-decoration: none !important;
+	color: #1d9bf0;
+}
+ 
+video {
+	width: 100% !important;
+	border: 1px solid #b2b2b2 !important;
+	border-radius: 0.25em;
+}
+</style>
+
 </head>
 
 
@@ -63,6 +93,14 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 }
 </script>
 
+<script>
+  if (document.querySelector('.datetimepicker')) {
+    flatpickr('.datetimepicker', {
+      allowInput: true
+    }); // flatpickr
+  }
+</script>
+
 <script src="%PUBLIC_URL%/assets/js/core/popper.min.js"></script>
 <script src="%PUBLIC_URL%/assets/js/core/bootstrap.min.js"></script>
 <script src="%PUBLIC_URL%/assets/js/plugins/perfect-scrollbar.min.js"></script>
@@ -77,6 +115,38 @@ if (win && document.querySelector('#sidenav-scrollbar')) {
 <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
 
 <script src="%PUBLIC_URL%/assets/js/soft-ui-dashboard.min.js?v=1.1.1"></script>
+
+<!-- <script src="%PUBLIC_URL%/assets/js/plugins/flatpickr.min.js"></script> -->
+
+<script
+	  src="https://unpkg.com/html5-qrcode">
+  </script>
+ <script>
+ function domReady(fn) {
+	 if (
+		 document.readyState === "complete" ||
+		 document.readyState === "interactive"
+	 ) {
+		 setTimeout(fn, 1000);
+	 } else {
+		 document.addEventListener("DOMContentLoaded", fn);
+	 }
+ }
+  
+ domReady(function () {
+  
+	 // If found you qr code
+	 function onScanSuccess(decodeText, decodeResult) {
+		 alert("You Qr is : " + decodeText, decodeResult);
+	 }
+  
+	 let htmlscanner = new Html5QrcodeScanner(
+		 "my-qr-reader",
+		 { fps: 10, qrbos: 250 }
+	 );
+	 htmlscanner.render(onScanSuccess);
+ });
+ </script>
 
 </body>
 

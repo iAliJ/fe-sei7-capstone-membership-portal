@@ -24,23 +24,16 @@ export default function DashboardTwo() {
   // console.log(allBenefits);
 
   return (
-
-    
-
-    // <>
-    // <Menu/>
-    // <Default/>
-    // <UserNav/>
 <>
 <div className='container-fluid py-4'>
    
 
-<div class="container-fluid py-2">
+<div class="container-fluid py-0">
       <section class="py-3">
         <div class="row">
           <div class="col-md-8 me-auto text-left">
-            <h5>Welcome [ First Name ] [ Last Name ],</h5>
-            <p className="text-primary">Last login: January 23, 2024</p>
+            <h5>Welcome {localStorage.getItem('first_name')} {localStorage.getItem('last_name')},</h5>
+            <p className="text-primary">{}</p>
           </div>
         </div>
         <div class="row mt-lg-4 mt-2">
@@ -221,12 +214,12 @@ export default function DashboardTwo() {
     </div>
 
 <div class="row my-4">
-    <div class="col col-md-6 col-xl-4 mt-md-0 mt-4">
+    <div class="col col-md-6 col-xl mt-md-0 mt-0">
           <div class="card">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Company Information</h6>
+                  <h6 class="mb-0">Membership Plan for your Organization</h6>
                 </div>
                 <div class="col-md-4 text-end">
                   <a href="#">
@@ -237,7 +230,7 @@ export default function DashboardTwo() {
             </div>
             <div class="card-body p-3">
               <p class="text-sm">
-                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
+                Information Goes here
               </p>
               <hr class="horizontal gray-light my-4"/>
               <ul class="list-group">

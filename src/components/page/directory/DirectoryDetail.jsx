@@ -7,13 +7,13 @@ import MembersList from './MembersList';
 
 export default function DirectoryDetail(props) {
 
-    const [message, setMessage] = useState([]);
+    // const [message, setMessage] = useState([]);
 
     const [orgDetail, setOrgDetail] = useState([]);
 
     const location = useLocation();
     //console.log(location);
-    const { id, name } = location.state;
+    const { id } = location.state;
 
     useEffect(() => {
         if(localStorage.getItem('access_token') === null){                   
