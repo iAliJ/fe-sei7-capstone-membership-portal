@@ -54,7 +54,7 @@ export default function DirectoryTable() {
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Logo</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CR Number</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">City</th>
-            {/* <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th> */}
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Website</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
           </tr>
@@ -67,7 +67,7 @@ export default function DirectoryTable() {
           <td class="align-middle text-sm"><p class="text-secondary mb-0"><img src={ organization.logo ? (organization.logo).replace("/membership_portal/media/fs_business_mvt","http://localhost:8000/") : "/assets/img/no-pictures.png" } alt={organization.name} className="avatar avatar-sm me-3" /></p></td>
           <td class="align-middle text-sm"><p class="text-secondary mb-0">{organization.cr_number}</p></td>
           <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{organization.city}</span></td>
-          {/* <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{organization.country}</span></td> */}
+          <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{organization.country}</span></td>
           <td class="align-middle text-sm"><span class="text-secondary text-sm">{organization.website}</span></td>
           <td class="align-middle text-center text-sm">
               <span class="badge badge-dot me-4">

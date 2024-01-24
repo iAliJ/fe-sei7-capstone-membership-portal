@@ -11,6 +11,7 @@ import Signup from './components/page/home/Signup';
 import Dashboard from './components/page/dashboard/Dashboard';
 // import UserHomepage from './components/page/dashboard/UserHomepage';
 import Benefits from './components/page/dashboard/Benefits';
+import Events from './components/page/dashboard/Events';
 import OrgForm from './components/page/OrgForm';
 
 import UserHomepage from './components/page/dashboard/UserHomepage'
@@ -75,6 +76,7 @@ function App(){
         <Route path="home" element={ <UserHomepage /> }></Route>
         <Route path="directory" element={ <Directory /> }></Route>
         <Route path="benefits" element={ <Benefits /> }></Route>
+        <Route path="events" element={ <Events /> }></Route>
         <Route path="" element={ <OrgForm addOrg={addOrg}/> }></Route>
       </Route>
 

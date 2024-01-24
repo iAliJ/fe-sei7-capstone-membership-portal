@@ -12,7 +12,7 @@ export default function sidebar() {
 <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-white" id="sidenav-main">
   <div className="sidenav-header">
     <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-    <a className="navbar-brand m-0" href="/dashboard">
+    <a className="navbar-brand m-0" href="/dashboard/home">
       <img src="../assets/img/logo-ct-dark.png" className="navbar-brand-img h-100" alt="main_logo" />
       <span className="ms-1 font-weight-bold">Membership Portal</span>
     </a>
