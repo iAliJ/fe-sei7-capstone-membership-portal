@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from "react";
 import Axios from 'axios';
+import { Link } from "react-router-dom";
 
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
@@ -50,7 +51,7 @@ export default function MembersList(props) {
                     <h6 class="mb-0 text-sm">{member.user_id} - {member.first_name} {member.last_name}</h6>
                     <p class="mb-0 text-xs">{member.email}</p>
                   </div>
-                  <a class="btn btn-link mb-0 pe-1 ps-0 ms-auto" onClick={handleShow}>More</a>
+                  <Link to="/dashboard/directory/member" state={{email:member.email}} class="btn btn-link mb-0 pe-1 ps-0 ms-auto">More</Link>
                 </li>
                 ))}
               </ul>

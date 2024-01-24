@@ -214,6 +214,9 @@ export default function OrgForm(props) {
         console.log(Axios.defaults.headers.common)
         const result = await Axios.post('http://127.0.0.1:8000/api/organization/create', preparedFormData);
         console.log(result.data)
+        if(result){
+          window.location.href = '/dashboard/pending'
+        }
   };
   // console.log(formInput);
   // console.log(combinedData);
