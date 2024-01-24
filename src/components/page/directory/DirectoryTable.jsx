@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from "react";
+import {  Link } from "react-router-dom";
 import Axios from 'axios';
 
 export default function DirectoryTable() {
@@ -63,11 +64,11 @@ export default function DirectoryTable() {
 
         {allDirectory.map(organization => ( 
         <tr key={organization.id}>
-          <td class="align-middle text-sm"><p class="text-sm text-secondary mb-0">{organization.name}</p></td>
+          <td class="align-middle text-sm px-3"><p class="text-sm text-primary h5 mb-0"><Link to="/dashboard/directory/detail" state={{id:organization.id, name:organization.name}}>{organization.name}</Link></p></td>
           <td class="align-middle text-sm"><p class="text-secondary mb-0"><img src={ organization.logo ? (organization.logo).replace("/membership_portal/media/fs_business_mvt","http://localhost:8000/") : "/assets/img/no-pictures.png" } alt={organization.name} className="avatar avatar-sm me-3" /></p></td>
           <td class="align-middle text-sm"><p class="text-secondary mb-0">{organization.cr_number}</p></td>
           <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{organization.city}</span></td>
-          <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{organization.country}</span></td>
+          <td class="align-middle text-center text-sm"><span class="text-secondary text-sm">{organization.country_name} <img src={organization.country_flag} alt={organization.country_short_name} height="15px" /></span></td>
           <td class="align-middle text-sm"><span class="text-secondary text-sm">{organization.website}</span></td>
           <td class="align-middle text-center text-sm">
               <span class="badge badge-dot me-4">

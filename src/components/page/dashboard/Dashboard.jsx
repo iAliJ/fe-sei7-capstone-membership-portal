@@ -48,7 +48,7 @@ export default function Dashboard(props) {
   return (
     <>
 
-<Sidebar />
+<Sidebar userData={props.userData} />
 
 
 <div className="main-content position-relative max-height-vh-100 h-100">

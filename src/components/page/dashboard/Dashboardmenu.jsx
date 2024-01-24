@@ -72,6 +72,9 @@ export default function Menu(props) {
           </a>
           <ul className="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
             <li className="mb-2">
+              Nothing to see here yet
+            </li>
+            {/* <li className="mb-2">
               <a className="dropdown-item border-radius-md" href="#">
                 <div className="d-flex py-1">
                   <div className="my-auto">
@@ -124,7 +127,7 @@ export default function Menu(props) {
                   </div>
                 </div>
               </a>
-            </li>
+            </li> */}
           </ul>
         </li>
       </ul>
