@@ -49,10 +49,11 @@ export default function Benefits() {
     Axios.get("/api/benefit/qrcode?id="+id+"&member="+localStorage.getItem('user_id'))
     .then( ( res ) => {
         console.log("Loaded Benefit QR Code Info");
+        console.log(res);
         //console.log(res.data);
         //redirect here
       
-        window.open('http://localhost:8000/membership_portal/media/qr/4_2.png', '_blank').focus(); 
+        window.open('http://localhost:8000/static/uploads/qr/'+res.data.benefit_id+"_"+res.data.member_id+".png", '_blank').focus(); 
         
     })
     .catch((error) => {
