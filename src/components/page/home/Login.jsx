@@ -47,6 +47,8 @@ export default function Login(props) {
                           localStorage.setItem("last_name",res.data.profile.last_name)
                           localStorage.setItem("organization_id",res.data.profile.organization_id)
                           localStorage.setItem("user_id",res.data.profile.user_id)
+                          localStorage.setItem("email",res.data.profile.email)
+                          localStorage.setItem("role",res.data.profile.role)
                           const user = {...newUser};
                           user['username'] = res.data.username
                           const {data} = await Axios.post('/api/token/',
