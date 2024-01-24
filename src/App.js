@@ -20,6 +20,8 @@ import UserHomepage from './components/page/dashboard/UserHomepage'
 import Directory from './components/page/directory/DirectoryTable'
 import DirectoryDetail from './components/page/directory/DirectoryDetail'
 import ResetPasswordForm from "./components/page/ResetPasswordForm"; 
+import BenefitAdd from "./components/benefit/BenefitAdd";
+import MemberDetail from './components/page/directory/MemberDetail'
 
 function App(){
   const [isAuth, setIsAuth] = useState(false);
@@ -79,10 +81,12 @@ function App(){
         <Route path="home" element={ <UserHomepage /> }></Route>
         <Route path="directory" element={ <Directory /> }></Route>
         <Route path="directory/detail" element={ <DirectoryDetail /> }></Route>
+        <Route path="directory/member" element={ <MemberDetail /> }></Route>
         <Route path="benefits" element={ <Benefits /> }></Route>
         <Route path="events" element={ <Events /> }></Route>
         <Route path="" element={ <OrgForm addOrg={addOrg}/> }></Route>
         <Route path="pending" element={ <OrgApprovalWait /> }></Route>
+        <Route path="benefit/add" element={ <BenefitAdd /> }></Route>
       </Route>
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
