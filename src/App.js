@@ -22,6 +22,7 @@ import DirectoryDetail from './components/page/directory/DirectoryDetail'
 import ResetPasswordForm from "./components/page/ResetPasswordForm"; 
 import BenefitAdd from "./components/benefit/BenefitAdd";
 import MemberDetail from './components/page/directory/MemberDetail'
+import MemberAdd from './components/page/directory/MemberAdd'
 import UserEditForm from './components/page/organization/UserEditForm'
 
 function App(){
@@ -100,13 +101,17 @@ function App(){
         <Route path="" element={ <OrgForm addOrg={addOrg}/> }></Route>
         <Route path="pending" element={ <OrgApprovalWait /> }></Route>
         <Route path="benefit/add" element={ <BenefitAdd /> }></Route>
+        <Route path="member/add" element={ <MemberAdd /> }></Route>
+
+        <Route path="profile" element={ <UserEditForm setUser={setUser}/> }></Route>
+        
       </Route>
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
       <Route path="/reset" element={<ResetPasswordForm />}></Route>
       {/* <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route> */}
-      <Route path="/profile" element={ <UserEditForm setUser={setUser}/> }></Route>
+      
     </Routes>
     
     </>

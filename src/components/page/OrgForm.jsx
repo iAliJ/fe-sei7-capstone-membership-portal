@@ -13,11 +13,13 @@ export default function OrgForm(props) {
   const preparedFormData = new FormData();
   let file = '';
 
-  const [countryList,setCountryList] = useState()
+  const [countryList,setCountryList] = useState();
   
+  const [planList,setPlanList] = useState();
+
   useEffect(() => {
     
-    Axios.get('api/country/list')
+    Axios.get('http://localhost:8000/api/country/list')
     .then(res=>{
       console.log(res.data);
       setCountryList(res.data)
@@ -26,8 +28,18 @@ export default function OrgForm(props) {
       console.log("error fetching country list");
     })
   
+    Axios.get('http://localhost:8000/api/plan/list')
+    .then(res=>{
+      console.log(res.data);
+      setPlanList(res.data)
+    })
+    .catch(err=>{
+      console.log("error fetching plan list");
+    })
+
     
   }, [])
+
   
 
   const [formInput, setFormInput] = useState({
@@ -45,7 +57,7 @@ export default function OrgForm(props) {
     website: '',
     content_info: '',
     interests: [],
-    plan: ''
+    plan_id: ''
     // interest1: '',
     // interest2: '',
     // interest3: '',
@@ -98,7 +110,7 @@ export default function OrgForm(props) {
   const combinedData = {
     ...formInput,
     interests: [...formInput.interests, ...selectedInterest],
-    plan: parseInt(membership)
+    plan_id: parseInt(membership)
   };
   
   const handleFileChange = (e) => {
@@ -239,9 +251,9 @@ export default function OrgForm(props) {
         console.log(Axios.defaults.headers.common)
         const result = await Axios.post('http://127.0.0.1:8000/api/organization/create', preparedFormData);
         console.log(result.data)
-        // if(result){
-        //   window.location.href = '/dashboard/pending'
-        // }
+        if(result){
+           window.location.href = '/dashboard/pending'
+        }
   };
   // console.log(membership);
   console.log(combinedData);
@@ -270,22 +282,28 @@ export default function OrgForm(props) {
                                 <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput} encType='multipart/form-data' action='' method='POST'>
                                     <div className="row">
                                     <label htmlFor="plan">Membership Plans</label>
-                                            <div className="mb-3">
-                                              <div className="form-check">
-                                              <input className="form-check-input" value="1" type="radio" name="plan" id="flexRadioDefault1" required 
-                                              onChange={handlePlan}/>
-                                              <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                                Individual Membership
-                                              </label>
-                                            </div>
+                                          <div className="mb-3">
+                                          { planList && 
+                                          <>
+                                          <div className="mb-3">
+                                          {planList.map((plan)=>(
                                             <div className="form-check">
+                                              <input className="form-check-input" value={plan.id} type="radio" name="plan_id" id="flexRadioDefault1"  
+                                              onChange={handlePlan} />
+                                              <label className="form-check-label" htmlFor="flexRadioDefault1">{plan.name}</label>
+                                            </div>
+                                          ))} </div>
+                                          </>
+                                          }
+                                            {/* <div className="form-check">
                                               <input className="form-check-input" value="2" type="radio" name="plan" id="flexRadioDefault2"
                                               onChange={handlePlan}/>
                                               <label className="form-check-label" htmlFor="flexRadioDefault2">
                                                 Corporate Membership
                                               </label>
-                                            </div>
-                                              </div>
+                                            </div> */}
+
+                                          </div>
                                         <div className="col-md-6">
                                             <label htmlFor="validationCustom01">Organization Name</label>
                                             <div className="mb-3">

@@ -51,7 +51,7 @@ export default function MembersList(props) {
                     <h6 class="mb-0 text-sm">{member.user_id} - {member.first_name} {member.last_name}</h6>
                     <p class="mb-0 text-xs">{member.email}</p>
                   </div>
-                  <Link to="/dashboard/directory/member" state={{email:member.email}} class="btn btn-link mb-0 pe-1 ps-0 ms-auto">More</Link>
+                  <Link to="/dashboard/directory/member" state={{email:member.email, org:props.org}} class="btn btn-link mb-0 pe-1 ps-0 ms-auto">More</Link>
                 </li>
                 ))}
               </ul>

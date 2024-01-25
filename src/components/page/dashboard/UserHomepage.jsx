@@ -230,9 +230,9 @@ export default function DashboardTwo() {
             </div>
             <div class="card-body p-3">
               <p class="text-sm">
-                Information Goes here
+                Description information for Organization and Plan Goes here
               </p>
-              <hr class="horizontal gray-light my-4"/>
+              {/* <hr class="horizontal gray-light my-4"/>
               <ul class="list-group">
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Alec M. Thompson</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
@@ -250,7 +250,7 @@ export default function DashboardTwo() {
                     <i class="fab fa-instagram fa-lg"></i>
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>

@@ -92,7 +92,7 @@ export default function DirectoryDetail(props) {
         </div>
 
     <div class="col-12 col-xl-4 mt-xl-0 mt-4">
-          <MembersList id={id} />
+          <MembersList id={id} org={orgDetail.name} />
         </div>
 </div>
 </div>

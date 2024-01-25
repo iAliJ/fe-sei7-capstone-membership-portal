@@ -116,7 +116,7 @@ console.log(formInput);
         // Axios.defaults.headers.common['Content-Type'] = 'multipart/form-data';
         console.log(Axios.defaults.headers.common)
         console.log("id",localStorage.getItem('user_id'));
-        const result = await Axios.post(`api/user/update?id=${localStorage.getItem('user_id')}`, preparedFormData);
+        const result = await Axios.post(`http://localhost:8000/api/user/update?id=${localStorage.getItem('user_id')}`, preparedFormData);
         console.log(result.data)
         if(result){
           window.location.href = '/dashboard/home'
@@ -126,12 +126,10 @@ console.log(formInput);
 
   return (
     <>
-    <div className="container position-sticky z-index-sticky top-0">
-        <div className="row">
-            <div className="col-12">
-    <main className="main-content mt-0">
+
+
     <section>
-        <div className="page-header min-vh-100">
+        <div className="page-header">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-10 mx-auto">
@@ -217,11 +215,9 @@ console.log(formInput);
             </div>
         </div>
     </section>
-</main>
 
-            </div>
-        </div>
-    </div>
+
+
     <script>
   {
   (() => {

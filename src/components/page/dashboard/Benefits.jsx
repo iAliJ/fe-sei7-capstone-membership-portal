@@ -82,7 +82,7 @@ export default function Benefits() {
             {/* <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th> */}
             <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created</th>
             <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expiry</th>
-            <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Used By (temp)</th>
+            <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
             <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
           </tr>
         </thead>
@@ -120,7 +120,7 @@ export default function Benefits() {
 
             <br />
 
-          {benefit.organization === localStorage.getItem('organization_id') && benefit.used_by_user ? (
+          {benefit.organization == localStorage.getItem('organization_id') && benefit.used_by_user ? (
             <>
             <span className="text-danger">
             {benefit.used_by_user.map(userby => (
