@@ -29,22 +29,31 @@ run `npm i` to install all required dependencies, these dependencies are:
 * fontawesome/free-solid-svg-icons
 * fontawesome/react-fontawesome
 
+## User Stories
+### User
+* As a User, I should be able to sign up and sign in.
+* As a User, I should be able to see all benefits.
+* As a User, I should be able to use a benefit.
+* As a User, I should be able to register for an event.
+### Organization Owner
+* As an organization I should be able to create an organization.
+* As an organization I should be able to create an account for my organization's members.
 ## Features
 
 * User signup and Login
 * Edit user profile
-* Respnsive design
+* Responsive design
 * Organization registration
-* Memebers can add benefits and browse other benefits to redeem
+* Members can add benefits and browse other benefits to redeem
 * Members can redeem benefits using QR codes
-* Members can view list of event to register and attend
-* Members can view all registred companies directory for networking
+* Members can view the list of events to register and attend
+* Members can view all registered companies directory for networking
 * Members can invite other members
 
 ## Future Plan
 
 * Plan upgrade and payment methods
-* Search page for directories, events and benefits
+* Search page for directories, events, and benefits
 * View company location via Google Maps
 
 ## List of Unsolved Problems
