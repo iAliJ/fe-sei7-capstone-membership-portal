@@ -43,6 +43,24 @@ export default function Benefits() {
        })()};
    }, []);
 
+   const generateBenefitQR = (id) => {
+    console.log("I am here");
+    console.log(id)
+    Axios.get("/api/benefit/qrcode?id="+id+"&member="+localStorage.getItem('user_id'))
+    .then( ( res ) => {
+        console.log("Loaded Benefit QR Code Info");
+        console.log(res);
+        //console.log(res.data);
+        //redirect here
+      
+        window.open('http://localhost:8000/static/uploads/qr/'+res.data.benefit_id+"_"+res.data.member_id+".png", '_blank').focus(); 
+        
+    })
+    .catch((error) => {
+        console.log("Error loading Benefit QR Code Information: ");
+        console.log(error);
+    })
+    }
 
 
   return (
@@ -79,7 +97,7 @@ export default function Benefits() {
           <td className="align-middle text-center text-sm"><span className="text-secondary text-sm">{benefit.expiry_date}</span></td>
           <td className="align-middle text-center text-sm bg-secondary">
               <span className="badge badge-dot me-4">
-              {benefit.status == 1 ? <><i className="bg-success"></i> Active</> : <><i className="bg-danger"></i>Inactive</> }
+              {benefit.status == 1 ? <><i className="bg-success"></i> Active</> : <><i className="bg-danger"></i>Expired</> }
                 <span className="text-dark text-xs"></span>
               </span>
           </td>
@@ -88,7 +106,8 @@ export default function Benefits() {
           <><a href="https://demo.mobelmedia.com/capture" className="btn btn-sm btn-primary" target="_blank">Redeem</a></> 
           // onClick={handleShow}
           :
-          <><a href="#" className="btn btn-sm btn-success">Use</a></>
+          <><a href="#" className="btn btn-sm btn-success" onClick={() => generateBenefitQR(benefit.id)}>Use</a> </>
+          // <><a href={"http://localhost:8000/api/benefit/qrcode?id="+benefit.id+"&member="+localStorage.getItem('user_id')} className="btn btn-sm btn-success" target="_blank">Use</a></>
           }
 
 {/* <a className={benefit.organization == localStorage.getItem('organization_id') ? "btn btn-sm btn-primary" : "btn btn-sm btn-success"} onClick={handleShow} href={benefit.organization == localStorage.getItem('organization_id') ? "#" : "#"}>{benefit.organization == localStorage.getItem('organization_id') ? "Redeem" : "Use"}</a>   */}
@@ -248,13 +267,13 @@ export default function Benefits() {
 
 </div>
 
-{/* <Modal show={show} onHide={handleClose}>
+{/* <Modal contentClassName="bd-example-modal-xl" show={show} onHide={handleClose}>
   <Modal.Header closeButton>
     <Modal.Title>Scan the QR Code</Modal.Title>
   </Modal.Header>
   <Modal.Body>
 
-			<div id="my-qr-reader"></div>
+  <iframe src="https://demo.mobelmedia.com/capture/" title="iframe QR Scanner"></iframe>
 
   </Modal.Body>
   <Modal.Footer>
