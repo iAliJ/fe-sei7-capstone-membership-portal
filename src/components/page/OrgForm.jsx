@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuTrans from './home/MenuTrans'
-import {useState} from "react";
+import {useState ,useEffect} from "react";
 import Axios from 'axios';
 
 import Footer from './home/Footer'
@@ -13,6 +13,23 @@ export default function OrgForm(props) {
   const preparedFormData = new FormData();
   let file = '';
 
+  const [countryList,setCountryList] = useState()
+  
+  useEffect(() => {
+    
+    Axios.get('api/country/list')
+    .then(res=>{
+      console.log(res.data);
+      setCountryList(res.data)
+    })
+    .catch(err=>{
+      console.log("error fetching country list");
+    })
+  
+    
+  }, [])
+  
+
   const [formInput, setFormInput] = useState({
     name: '',
     cr_number: '',
@@ -22,7 +39,7 @@ export default function OrgForm(props) {
     address_one: '',
     address_two: '',
     city: '',
-    country_id: '',
+    country_id: '837',
     logo: '',
     zip_code: '',
     website: '',
@@ -318,13 +335,28 @@ export default function OrgForm(props) {
                                             className="form-control" name="city" placeholder="City" aria-label="City" required/>
                                             </div>
                                             <label htmlFor="validationCustom05">Country</label>
-                                            <div className="mb-3">
+                                            {/* <div className="mb-3">
                                             <input id='validationCustom05' type="text" 
                                             value={formInput.country_id} 
                                             onChange={({ target }) => {
                                               handleUserInput(target.name, target.value);
                                             }} 
                                             className="form-control" name="country_id" placeholder="Country" aria-label="Country" required/>
+                                            </div> */}
+                                            <div className='mb-3'>{ countryList &&
+                                            <select value={formInput.country_id} 
+                                             onChange={({ target }) => {
+                                            handleUserInput(target.name, target.value);
+                                            }}
+                                            className="form-control" name="country_id" placeholder="Country" aria-label="Country" required
+                                            >
+                                              {countryList.map((country)=>(
+                                                
+                                                <option key={country.id} value={country.id} className="form-control">
+                                                  {country.name}
+                                                </option>
+                                              ))}
+                                            </select>}
                                             </div>
                                             </div>
                                         <div className="col-md-6">
