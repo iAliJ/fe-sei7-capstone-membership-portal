@@ -22,6 +22,7 @@ import DirectoryDetail from './components/page/directory/DirectoryDetail'
 import ResetPasswordForm from "./components/page/ResetPasswordForm"; 
 import BenefitAdd from "./components/benefit/BenefitAdd";
 import MemberDetail from './components/page/directory/MemberDetail'
+import UserEditForm from './components/page/organization/UserEditForm'
 
 function App(){
   const [isAuth, setIsAuth] = useState(false);
@@ -67,6 +68,18 @@ function App(){
     })
   }
 
+  const setUser = (user) =>{
+  Axios.post("api/user/update", user)
+  .then((res) => {
+    console.log("Profile Updated Successfully");
+    res.redirect("dashboard/home")
+  })
+  .catch((err) => {
+    console.log("Error Updating Profile");
+    console.log(err);
+  })
+  }
+
   return (
     <>
 
@@ -93,6 +106,7 @@ function App(){
       <Route path="/benefits" element={ <Benefits/> }></Route>
       <Route path="/reset" element={<ResetPasswordForm />}></Route>
       {/* <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route> */}
+      <Route path="/profile" element={ <UserEditForm setUser={setUser}/> }></Route>
     </Routes>
     
     </>

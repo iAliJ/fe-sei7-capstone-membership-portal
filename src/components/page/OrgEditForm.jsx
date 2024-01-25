@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuTrans from './home/MenuTrans'
-import {useState ,useEffect} from "react";
+import {useState} from "react";
 import Axios from 'axios';
 
 import Footer from './home/Footer'
@@ -8,27 +8,10 @@ import Footer from './home/Footer'
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
-export default function OrgForm(props) {
+export default function OrgEditForm(props) {
 
   const preparedFormData = new FormData();
   let file = '';
-
-  const [countryList,setCountryList] = useState()
-  
-  useEffect(() => {
-    
-    Axios.get('api/country/list')
-    .then(res=>{
-      console.log(res.data);
-      setCountryList(res.data)
-    })
-    .catch(err=>{
-      console.log("error fetching country list");
-    })
-  
-    
-  }, [])
-  
 
   const [formInput, setFormInput] = useState({
     name: '',
@@ -39,21 +22,12 @@ export default function OrgForm(props) {
     address_one: '',
     address_two: '',
     city: '',
-    country_id: '837',
+    country_id: '',
     logo: '',
     zip_code: '',
     website: '',
     content_info: '',
     interests: [],
-    plan: ''
-    // interest1: '',
-    // interest2: '',
-    // interest3: '',
-    // interest4: '',
-    // interest5: '',
-    // interest6: '',
-    // interest7: '',
-    // interest8: '',
   });
 
   const [formError, setFormError] = useState({
@@ -74,7 +48,6 @@ export default function OrgForm(props) {
     });
 
   const [selectedInterest, setSelectedInterest] = useState([]);
-  const [membership, setMembership] = useState(1);
 
   const handleUserInput = (name, value) => {
     setFormInput({
@@ -98,7 +71,6 @@ export default function OrgForm(props) {
   const combinedData = {
     ...formInput,
     interests: [...formInput.interests, ...selectedInterest],
-    plan: parseInt(membership)
   };
   
   const handleFileChange = (e) => {
@@ -108,10 +80,6 @@ export default function OrgForm(props) {
         console.log('==============FILE CHANGES============')
         console.log(file)
     }
-  }
-
-  const handlePlan = e => {
-    setMembership(e.target.value)
   }
 
   const validateFormInput = async (event) => {
@@ -220,31 +188,19 @@ export default function OrgForm(props) {
 
         Object.keys(combinedData).forEach (key =>{
           // preparedFormData.append(key, combinedData[key]);
-          if(Array.isArray(combinedData[key])){
-            for(let i=0; i < combinedData[key].length;i++){
-              preparedFormData.append(key, combinedData[key][i]);
-            }
-          }else{
-            preparedFormData.append(key, combinedData[key]);
-          }
+          preparedFormData.append(key, combinedData[key]);
         })
 
-        preparedFormData.append('user_id',localStorage.getItem('user_id'))
-        // preparedFormData.append('plan', combinedData.plan)
-        
         // props.addOrg(preparedFormData);
         // props.addOrg(selectedInterest);
         Axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('access_token');
         Axios.defaults.headers.common['Content-Type'] = 'multipart/form-data';
         console.log(Axios.defaults.headers.common)
-        const result = await Axios.post('http://127.0.0.1:8000/api/organization/create', preparedFormData);
+        const result = await Axios.post('http://127.0.0.1:8000/api/organization/update', preparedFormData);
         console.log(result.data)
-        // if(result){
-        //   window.location.href = '/dashboard/pending'
-        // }
   };
-  // console.log(membership);
-  console.log(combinedData);
+  // console.log(formInput);
+  // console.log(combinedData);
   // console.log(selectedInterest);
   // console.log(preparedFormData);
 
@@ -253,7 +209,7 @@ export default function OrgForm(props) {
     <div className="container position-sticky z-index-sticky top-0">
         <div className="row">
             <div className="col-12">
-                {/* <MenuTrans /> */}
+                <MenuTrans />
             
     <main className="main-content mt-0">
     <section>
@@ -263,29 +219,12 @@ export default function OrgForm(props) {
                     <div className="col-lg-10 mx-auto">
                         <div className="card card-plain">
                             <div className="card-header pb-0 text-start mt-6">
-                                <h4 className="font-weight-bolder">Organization Application Form</h4>
-                                <p className="mb-0">Enter your organization details below</p>
+                                <h4 className="font-weight-bolder">Organization Edit Form</h4>
+                                <p className="mb-0">Edit your organization details below</p>
                             </div>
                             <div className="card-body pb-3">
                                 <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput} encType='multipart/form-data' action='' method='POST'>
                                     <div className="row">
-                                    <label htmlFor="plan">Membership Plans</label>
-                                            <div className="mb-3">
-                                              <div className="form-check">
-                                              <input className="form-check-input" value="1" type="radio" name="plan" id="flexRadioDefault1" required 
-                                              onChange={handlePlan}/>
-                                              <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                                Individual Membership
-                                              </label>
-                                            </div>
-                                            <div className="form-check">
-                                              <input className="form-check-input" value="2" type="radio" name="plan" id="flexRadioDefault2"
-                                              onChange={handlePlan}/>
-                                              <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                                Corporate Membership
-                                              </label>
-                                            </div>
-                                              </div>
                                         <div className="col-md-6">
                                             <label htmlFor="validationCustom01">Organization Name</label>
                                             <div className="mb-3">
@@ -360,28 +299,13 @@ export default function OrgForm(props) {
                                             className="form-control" name="city" placeholder="City" aria-label="City" required/>
                                             </div>
                                             <label htmlFor="validationCustom05">Country</label>
-                                            {/* <div className="mb-3">
+                                            <div className="mb-3">
                                             <input id='validationCustom05' type="text" 
                                             value={formInput.country_id} 
                                             onChange={({ target }) => {
                                               handleUserInput(target.name, target.value);
                                             }} 
                                             className="form-control" name="country_id" placeholder="Country" aria-label="Country" required/>
-                                            </div> */}
-                                            <div className='mb-3'>{ countryList &&
-                                            <select value={formInput.country_id} 
-                                             onChange={({ target }) => {
-                                            handleUserInput(target.name, target.value);
-                                            }}
-                                            className="form-control" name="country_id" placeholder="Country" aria-label="Country" required
-                                            >
-                                              {countryList.map((country)=>(
-                                                
-                                                <option key={country.id} value={country.id} className="form-control">
-                                                  {country.name}
-                                                </option>
-                                              ))}
-                                            </select>}
                                             </div>
                                             </div>
                                         <div className="col-md-6">
@@ -624,7 +548,7 @@ export default function OrgForm(props) {
   </div>
 </div> */}
 
-{/* <Footer /> */}
+<Footer />
 
             </div>
         </div>

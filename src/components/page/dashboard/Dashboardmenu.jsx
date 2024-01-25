@@ -42,7 +42,7 @@ export default function Menu(props) {
         </div>
       </div>
       <ul className="navbar-nav justify-content-end">
-      <li className="nav-item d-flex align-items-center px-5">{localStorage.getItem('first_name')}</li>
+      <li className="nav-item d-flex align-items-center px-5"><a href='/profile'>{localStorage.getItem('first_name')}</a></li>
         <li className="nav-item d-flex align-items-center">
           <a href="#" onClick={props.logout} className="nav-link text-body font-weight-bold px-0" target="_blank">
             <i className="fa fa-user me-sm-1"></i>
