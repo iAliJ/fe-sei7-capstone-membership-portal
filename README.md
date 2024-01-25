@@ -39,10 +39,14 @@ run `npm i` to install all required dependencies, these dependencies are:
 * Members can redeem benefits using QR codes
 * Members can view list of event to register and attend
 * Members can view all registred companies directory for networking
+* Members can invite other members
 
 ## Future Plan
 
-* Members can invite other members
 * Plan upgrade and payment methods
 * Search page for directories, events and benefits
 * View company location via Google Maps
+
+## List of Unsolved Problems
+* Reset password form needs to be adjusted and fixed.
+* User profile updates but the user needs to log out and log in to see the updated data.
