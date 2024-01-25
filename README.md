@@ -1,18 +1,41 @@
-# fe-sei7-capstone-membership-portal
-Front End SEI7 Capstone Project Membership-Portal
+# Membership Portal Web App
 
-# Dependencies
+Clien web app for membership portal that links companies together through benefits and events.
 
-npm i axios
-npm i react-router-dom 
-npm i react-bootstrap
-npm i --save @fortawesome/fontawesome-svg-core
-npm install --save @fortawesome/free-solid-svg-icons
-npm install --save @fortawesome/react-fontawesome
+## App Screenshots
 
+<img width="1329" alt="image" src="https://github.com/mmaskati/fe-sei7-capstone-membership-portal/assets/47180374/1c8f0923-f657-476a-91ed-2a3b7b8af90f">
 
-<img src="https://i.imgur.com/NQXEQci.png">
-<img = src="https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png"> 
+<img width="1440" alt="image" src="https://github.com/mmaskati/fe-sei7-capstone-membership-portal/assets/47180374/7bbb45cb-0ad1-46b9-bd1f-b43be3355d4e">
+
+<img width="1440" alt="image" src="https://github.com/mmaskati/fe-sei7-capstone-membership-portal/assets/47180374/1a604c86-f673-47e6-b610-b6174bf9931b">
+
+<img width="1440" alt="image" src="https://github.com/mmaskati/fe-sei7-capstone-membership-portal/assets/47180374/e434a17d-97f9-424f-a563-101961128415">
+
+## Technology Stack
+
+The client app is powered by NodeJS and ReactJS
+
+## Dependencies
+
+add `proxy` field in `package.json` that points to backend url.
+
+run `npm i` to install all required dependencies, these dependencies are:
+
+* axios
+* react-router-dom 
+* react-bootstrap
+* fontawesome/fontawesome-svg-core
+* fontawesome/free-solid-svg-icons
+* fontawesome/react-fontawesome
+
+## Features
+
+* User signup and Login
+* Organization registration
+* memebers can add benefits and browse other benefits to redeem
+* members can view list of event to register and attend
+* members can view all registred companies directory for networking
 
 # Project #4: Capstone
 
