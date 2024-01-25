@@ -32,6 +32,7 @@ run `npm i` to install all required dependencies, these dependencies are:
 ## Features
 
 * User signup and Login
+* Edit user profile
 * Respnsive design
 * Organization registration
 * Memebers can add benefits and browse other benefits to redeem
