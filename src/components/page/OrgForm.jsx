@@ -28,6 +28,7 @@ export default function OrgForm(props) {
     website: '',
     content_info: '',
     interests: [],
+    plan: ''
     // interest1: '',
     // interest2: '',
     // interest3: '',
@@ -56,6 +57,7 @@ export default function OrgForm(props) {
     });
 
   const [selectedInterest, setSelectedInterest] = useState([]);
+  const [membership, setMembership] = useState(1);
 
   const handleUserInput = (name, value) => {
     setFormInput({
@@ -79,6 +81,7 @@ export default function OrgForm(props) {
   const combinedData = {
     ...formInput,
     interests: [...formInput.interests, ...selectedInterest],
+    plan: parseInt(membership)
   };
   
   const handleFileChange = (e) => {
@@ -88,6 +91,10 @@ export default function OrgForm(props) {
         console.log('==============FILE CHANGES============')
         console.log(file)
     }
+  }
+
+  const handlePlan = e => {
+    setMembership(e.target.value)
   }
 
   const validateFormInput = async (event) => {
@@ -206,6 +213,7 @@ export default function OrgForm(props) {
         })
 
         preparedFormData.append('user_id',localStorage.getItem('user_id'))
+        // preparedFormData.append('plan', combinedData.plan)
         
         // props.addOrg(preparedFormData);
         // props.addOrg(selectedInterest);
@@ -214,12 +222,12 @@ export default function OrgForm(props) {
         console.log(Axios.defaults.headers.common)
         const result = await Axios.post('http://127.0.0.1:8000/api/organization/create', preparedFormData);
         console.log(result.data)
-        if(result){
-          window.location.href = '/dashboard/pending'
-        }
+        // if(result){
+        //   window.location.href = '/dashboard/pending'
+        // }
   };
-  // console.log(formInput);
-  // console.log(combinedData);
+  // console.log(membership);
+  console.log(combinedData);
   // console.log(selectedInterest);
   // console.log(preparedFormData);
 
@@ -244,6 +252,23 @@ export default function OrgForm(props) {
                             <div className="card-body pb-3">
                                 <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput} encType='multipart/form-data' action='' method='POST'>
                                     <div className="row">
+                                    <label htmlFor="plan">Membership Plans</label>
+                                            <div className="mb-3">
+                                              <div className="form-check">
+                                              <input className="form-check-input" value="1" type="radio" name="plan" id="flexRadioDefault1" required 
+                                              onChange={handlePlan}/>
+                                              <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                Individual Membership
+                                              </label>
+                                            </div>
+                                            <div className="form-check">
+                                              <input className="form-check-input" value="2" type="radio" name="plan" id="flexRadioDefault2"
+                                              onChange={handlePlan}/>
+                                              <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                Corporate Membership
+                                              </label>
+                                            </div>
+                                              </div>
                                         <div className="col-md-6">
                                             <label htmlFor="validationCustom01">Organization Name</label>
                                             <div className="mb-3">

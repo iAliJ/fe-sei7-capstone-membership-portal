@@ -21,6 +21,7 @@ import Directory from './components/page/directory/DirectoryTable'
 import DirectoryDetail from './components/page/directory/DirectoryDetail' 
 import BenefitAdd from "./components/benefit/BenefitAdd";
 import MemberDetail from './components/page/directory/MemberDetail'
+import UserEditForm from './components/page/organization/UserEditForm'
 
 
 function App(){
@@ -67,6 +68,18 @@ function App(){
     })
   }
 
+  const setUser = (user) =>{
+  Axios.post("api/user/update", user)
+  .then((res) => {
+    console.log("Profile Updated Successfully");
+    res.redirect("dashboard/home")
+  })
+  .catch((err) => {
+    console.log("Error Updating Profile");
+    console.log(err);
+  })
+  }
+
   return (
     <>
 
@@ -92,6 +105,7 @@ function App(){
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
       {/* <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route> */}
+      <Route path="/profile" element={ <UserEditForm setUser={setUser}/> }></Route>
     </Routes>
     
     </>

@@ -39,7 +39,7 @@ export default function DashboardTwo() {
       <section class="py-3">
         <div class="row">
           <div class="col-md-8 me-auto text-left">
-            <h5>Welcome [ First Name ] [ Last Name ],</h5>
+            <h5>Welcome {localStorage.getItem('first_name')} {localStorage.getItem('last_name')},</h5>
             <p className="text-primary">Last login: January 23, 2024</p>
           </div>
         </div>
