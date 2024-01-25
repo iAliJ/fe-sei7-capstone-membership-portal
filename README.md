@@ -29,6 +29,9 @@ run `npm i` to install all required dependencies, these dependencies are:
 * fontawesome/free-solid-svg-icons
 * fontawesome/react-fontawesome
 
+## Wireframes
+https://app.diagrams.net/#G1vBYXIxjdF9zCYnln7T8lfdi-wbU6Cr0P#%7B%22pageId%22%3A%22DMXEUu-AOoocjwIExP6m%22%7D
+
 ## User Stories
 ### User
 * As a User, I should be able to sign up and sign in.
