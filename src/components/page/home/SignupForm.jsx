@@ -159,7 +159,7 @@ export default function SignupForm(props) {
                   <p className="mb-0">Enter your email and password to register</p>
                 </div>
                 <div className="card-body pb-3">
-                  <form className='needs-validation' noValidate role="form" autoComplete="off" onSubmit={validateFormInput}>
+                  <form className='needs-validation' noValidate autoComplete="off" onSubmit={validateFormInput}>
                     {/* <label htmlFor="validationCustom01">Username</label>
                     <div className="mb-3">
                       <input id="validationCustom01" onChange={handleChange} type="text" className="form-control" name="username" placeholder="First Name" aria-label="First Name" required/>
@@ -202,9 +202,9 @@ export default function SignupForm(props) {
                       <div className="invalid-feedback">
                         Please enter a valid email address.
                       </div>
-                      {props.emailExist ? <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <span class="alert-icon"><i class="bi bi-exclamation-circle-fill"></i></span>
-                        <span class="alert-text"><strong>Warning!</strong> This email is already registered</span>
+                      {props.emailExist ? <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                        <span className="alert-icon"><i className="bi bi-exclamation-circle-fill"></i></span>
+                        <span className="alert-text"><strong>Warning!</strong> This email is already registered</span>
                         {/* <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                        </button> */}

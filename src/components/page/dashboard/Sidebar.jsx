@@ -102,9 +102,19 @@ export default function Sidebar(props) {
       {/* { show ? */}
         <a className="nav-link" href="/dashboard/benefit/add">
           <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="bi bi-bag-heart-fill text-dark text-lg"></i>
+              <i className="bi bi-qr-code text-dark text-lg"></i>
           </div>
           <span className="nav-link-text ms-1">Add Benefit</span>
+        </a>
+      {/* : "" } */}
+      </li>
+      <li className="nav-item">
+      {/* { show ? */}
+        <a className="nav-link" href="/dashboard/member/add">
+          <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i className="bi bi-person-fill-add text-dark text-lg"></i>
+          </div>
+          <span className="nav-link-text ms-1">Invite Member(s)</span>
         </a>
       {/* : "" } */}
       </li>

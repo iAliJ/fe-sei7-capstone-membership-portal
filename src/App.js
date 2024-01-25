@@ -18,11 +18,11 @@ import OrgApprovalWait from './components/page/OrgApprovalWait';
 import UserHomepage from './components/page/dashboard/UserHomepage'
 // import Orgtable from './components/page/organization/Orgtable'
 import Directory from './components/page/directory/DirectoryTable'
-import DirectoryDetail from './components/page/directory/DirectoryDetail' 
+import DirectoryDetail from './components/page/directory/DirectoryDetail'
+import ResetPasswordForm from "./components/page/ResetPasswordForm"; 
 import BenefitAdd from "./components/benefit/BenefitAdd";
 import MemberDetail from './components/page/directory/MemberDetail'
 import UserEditForm from './components/page/organization/UserEditForm'
-
 
 function App(){
   const [isAuth, setIsAuth] = useState(false);
@@ -104,6 +104,7 @@ function App(){
 
       {/* <Route path="/dash" element={ <UserHomepage/> }></Route> */}
       <Route path="/benefits" element={ <Benefits/> }></Route>
+      <Route path="/reset" element={<ResetPasswordForm />}></Route>
       {/* <Route path="/OrgForm" element={ <OrgForm addOrg={addOrg}/> }></Route> */}
       <Route path="/profile" element={ <UserEditForm setUser={setUser}/> }></Route>
     </Routes>
